@@ -61,18 +61,18 @@ export default function Home() {
 
           <Link href="/">About Us</Link>
           <Link href="/">Our Discord Bot</Link>
-          <Link href="/">Share your link</Link>
+          <a href="/" className={styles.shareLink}>Share your link</a>
 
-          <button className={styles.explore}>
+          {/* <button className={styles.explore}>
             Explore
             <svg width="7" height="4" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 0L3.5 4L7 0H0Z" fill="white"/>
             </svg>
-          </button>
+          </button> */}
 
-          <button className={styles.listNFT}>
+          {/* <button className={styles.listNFT}>
             List an NFT
-          </button>
+          </button> */}
         
         </div>
         
