@@ -25,6 +25,18 @@ export default function Home() {
     setCategoryChanged(!categoryChanged)
   }
 
+  let changedChain = false;
+
+  const changeChain = () => {
+    changedChain = !changedChain;
+    let eth = document.querySelector(".eth")
+    if(changedChain){
+      eth.style.display = "flex";
+    }else{
+      eth.style.display = "none";
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -45,7 +57,7 @@ export default function Home() {
 
           <svg  className={styles.closeMenu + " " + "closeMenu"} onClick={handleMenu} clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
 
-          <div className={styles.changeChain}>
+          <div className={styles.changeChain} onClick={changeChain}>
               <img src="/solana.png"/>
               <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_5_160)">
@@ -57,6 +69,11 @@ export default function Home() {
                 </clipPath>
                 </defs>
               </svg>
+          </div>
+
+          <div className={styles.ethereumChain + " " + "eth"}>
+            <img src="/eth.png"/>
+            <abbr title="Coming Soon"><p>Ethereum</p></abbr>
           </div>
 
           <Link href="/">About Us</Link>

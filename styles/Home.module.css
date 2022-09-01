@@ -90,6 +90,25 @@
   border-radius: 15px;
 }
 
+.ethereumChain {
+  background: var(--lighter-bg);
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 30px;
+  position: absolute;
+  margin-top: 120px;
+  margin-left: -29px;
+  display: none;
+}
+
+.ethereumChain img {
+  width: 20px;
+  height: 35px;
+  margin-right: 10px;
+}
+
 .changeChain svg {
   width: 35px;
   height: 35px;
@@ -308,6 +327,12 @@
     border-bottom: 1px solid var(--lightest);
     border-bottom-right-radius: 30px;
     transition: all 350ms linear;
+  }
+
+  .ethereumChain {
+    margin-top: 10px;
+    margin-left: 0px;
+    position: relative;
   }
 
   .closeMenu{
