@@ -154,7 +154,6 @@
 .topPart {
   margin: 0 25px;
   display: flex;
-  justify-content: space-between;
   margin-top: 180px;
   border-bottom: 1px solid var(--lightest);
 }
@@ -309,6 +308,7 @@
   cursor: pointer;
   margin-bottom: 12px;
   border: none;
+  margin-right: 20px;
 }
 
 /*  RESPONSIVE */

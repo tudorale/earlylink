@@ -5,7 +5,6 @@ import {useState, useEffect} from "react";
 
 export default function Home() {
 
-  const [categoryChanged, setCategoryChanged] = useState(false);
 
   let status = false;
   const handleMenu = () => {
@@ -21,10 +20,6 @@ export default function Home() {
 
   }
 
-  const changeCategory = () =>{
-    setCategoryChanged(!categoryChanged)
-  }
-
   let changedChain = false;
 
   const changeChain = () => {
@@ -37,6 +32,18 @@ export default function Home() {
     }
   }
 
+  const [nfts, setNfts] = useState(true);
+  const [products, setProducts] = useState(false);
+
+  const nftTable = () => {
+    setNfts(true);
+    setProducts(false)
+  }
+
+  const productsTable = () => {
+    setNfts(false);
+    setProducts(true)
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -142,10 +149,11 @@ export default function Home() {
 
       <div>
         <div className={styles.topPart}>
-          <button className={styles.changeTable} onClick={changeCategory}>{categoryChanged ? "NFTs Projects" : "Products"}</button>
+          <button className={styles.changeTable} onClick={nftTable}>NFTs Projects</button>
+          <button className={styles.changeTable} onClick={productsTable}>Products</button>
         </div>
 
-        <div className={styles.table + " " + "nftsTable"} style={categoryChanged ? {display: "none"} : {display: "block"}}>
+        <div className={styles.table + " " + "nftsTable"} style={nfts ? {display: "block"} : {display: "none"}}>
           <div className={styles.tableHeader}>
               <div>No.</div>
               <div>Name</div>
@@ -296,7 +304,7 @@ export default function Home() {
           <div className={styles.line}></div>
         </div>
 
-        <div className={styles.table + " " + "productsTable"} style={categoryChanged ? {display: "block"} : {display: "none"}}>
+        <div className={styles.table + " " + "productsTable"} style={products ? {display: "block"} : {display: "none"}}>
           <div className={styles.tableHeader}>
               <div>No.</div>
               <div>Name</div>
