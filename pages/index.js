@@ -78,7 +78,7 @@ export default function Home() {
 
           <Link href="/">About Us</Link>
           <Link href="/">Our Discord Bot</Link>
-          <a href="/" className={styles.shareLink}>Share your link</a>
+          <a href="#" className={styles.shareLink}>Share your link</a>
 
           {/* <button className={styles.explore}>
             Explore
@@ -166,12 +166,12 @@ export default function Home() {
             <div className={styles.twitterNumbers}>
               <span className={styles.mobileInfo}>Twitter:</span>
               <p>3k</p>
-              <a href="/"><img src="/twitter.svg"/></a>
+              <a href="#"><img src="/twitter.svg"/></a>
             </div>
             <div className={styles.discordNumbers}>
               <span className={styles.mobileInfo}>Discord:</span>
               <p>5k</p>
-              <a href="/"><img src="/discord.svg"/></a>
+              <a href="#"><img src="/discord.svg"/></a>
             </div>
             <div className={styles.daoVotes}>
               <span className={styles.mobileInfo}>DAO Votes:</span>
@@ -201,12 +201,12 @@ export default function Home() {
             <div className={styles.twitterNumbers}>
               <span className={styles.mobileInfo}>Twitter:</span>
               <p>3k</p>
-              <a href="/"><img src="/twitter.svg"/></a>
+              <a href="#"><img src="/twitter.svg"/></a>
             </div>
             <div className={styles.discordNumbers}>
               <span className={styles.mobileInfo}>Discord:</span>
               <p>5k</p>
-              <a href="/"><img src="/discord.svg"/></a>
+              <a href="#"><img src="/discord.svg"/></a>
             </div>
             <div className={styles.daoVotes}>
               <span className={styles.mobileInfo}>DAO Votes:</span>
@@ -236,12 +236,12 @@ export default function Home() {
             <div className={styles.twitterNumbers}>
               <span className={styles.mobileInfo}>Twitter:</span>
               <p>3k</p>
-              <a href="/"><img src="/twitter.svg"/></a>
+              <a href="#"><img src="/twitter.svg"/></a>
             </div>
             <div className={styles.discordNumbers}>
               <span className={styles.mobileInfo}>Discord:</span>
               <p>5k</p>
-              <a href="/"><img src="/discord.svg"/></a>
+              <a href="#"><img src="/discord.svg"/></a>
             </div>
             <div className={styles.daoVotes}>
               <span className={styles.mobileInfo}>DAO Votes:</span>
@@ -271,12 +271,12 @@ export default function Home() {
             <div className={styles.twitterNumbers}>
               <span className={styles.mobileInfo}>Twitter:</span>
               <p>3k</p>
-              <a href="/"><img src="/twitter.svg"/></a>
+              <a href="#"><img src="/twitter.svg"/></a>
             </div>
             <div className={styles.discordNumbers}>
               <span className={styles.mobileInfo}>Discord:</span>
               <p>5k</p>
-              <a href="/"><img src="/discord.svg"/></a>
+              <a href="#"><img src="/discord.svg"/></a>
             </div>
             <div className={styles.daoVotes}>
               <span className={styles.mobileInfo}>DAO Votes:</span>
@@ -317,12 +317,12 @@ export default function Home() {
             <div className={styles.twitterNumbers}>
               <span className={styles.mobileInfo}>Twitter:</span>
               <p>3k</p>
-              <a href="/"><img src="/twitter.svg"/></a>
+              <a href="#"><img src="/twitter.svg"/></a>
             </div>
             <div className={styles.discordNumbers}>
               <span className={styles.mobileInfo}>Discord:</span>
               <p>5k</p>
-              <a href="/"><img src="/discord.svg"/></a>
+              <a href="#"><img src="/discord.svg"/></a>
             </div>
             <div className={styles.daoVotes}>
               <span className={styles.mobileInfo}>DAO Votes:</span>
@@ -352,12 +352,12 @@ export default function Home() {
             <div className={styles.twitterNumbers}>
               <span className={styles.mobileInfo}>Twitter:</span>
               <p>3k</p>
-              <a href="/"><img src="/twitter.svg"/></a>
+              <a href="#"><img src="/twitter.svg"/></a>
             </div>
             <div className={styles.discordNumbers}>
               <span className={styles.mobileInfo}>Discord:</span>
               <p>5k</p>
-              <a href="/"><img src="/discord.svg"/></a>
+              <a href="#"><img src="/discord.svg"/></a>
             </div>
             <div className={styles.daoVotes}>
               <span className={styles.mobileInfo}>DAO Votes:</span>
@@ -387,12 +387,12 @@ export default function Home() {
             <div className={styles.twitterNumbers}>
               <span className={styles.mobileInfo}>Twitter:</span>
               <p>3k</p>
-              <a href="/"><img src="/twitter.svg"/></a>
+              <a href="#"><img src="/twitter.svg"/></a>
             </div>
             <div className={styles.discordNumbers}>
               <span className={styles.mobileInfo}>Discord:</span>
               <p>5k</p>
-              <a href="/"><img src="/discord.svg"/></a>
+              <a href="#"><img src="/discord.svg"/></a>
             </div>
             <div className={styles.daoVotes}>
               <span className={styles.mobileInfo}>DAO Votes:</span>
@@ -422,12 +422,12 @@ export default function Home() {
             <div className={styles.twitterNumbers}>
               <span className={styles.mobileInfo}>Twitter:</span>
               <p>3k</p>
-              <a href="/"><img src="/twitter.svg"/></a>
+              <a href="#"><img src="/twitter.svg"/></a>
             </div>
             <div className={styles.discordNumbers}>
               <span className={styles.mobileInfo}>Discord:</span>
               <p>5k</p>
-              <a href="/"><img src="/discord.svg"/></a>
+              <a href="#"><img src="/discord.svg"/></a>
             </div>
             <div className={styles.daoVotes}>
               <span className={styles.mobileInfo}>DAO Votes:</span>
