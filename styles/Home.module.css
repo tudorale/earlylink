@@ -156,6 +156,7 @@
   display: flex;
   margin-top: 180px;
   border-bottom: 1px solid var(--lightest);
+  justify-content: center;
 }
 
 .topPart p:nth-child(1){
