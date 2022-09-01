@@ -308,6 +308,7 @@
   border-radius: 25px;
   cursor: pointer;
   margin-bottom: 12px;
+  border: none;
 }
 
 /*  RESPONSIVE */
@@ -321,7 +322,8 @@
     align-items: center;
     background: #03000e;
     left: -350px;
-    padding: 30px 50px;
+    padding: 30px 20px;
+    width: 240px;
     padding-top: 75px;
     border-right: 1px solid var(--lightest);
     border-bottom: 1px solid var(--lightest);
