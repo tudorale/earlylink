@@ -154,8 +154,7 @@
 .topPart {
   margin: 0 25px;
   display: flex;
-  margin-top: 180px;
-  border-bottom: 1px solid var(--lightest);
+  margin-top: 80px;
   justify-content: center;
 }
 
