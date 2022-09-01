@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from "next/link"
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
+import Typed from "typed.js";
 
 export default function Home() {
 
@@ -44,6 +45,27 @@ export default function Home() {
     setNfts(false);
     setProducts(true)
   }
+
+  const el = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ["Discover", "Dive in", "Invest in"],
+      startDelay: 300,
+      typeSpeed: 180,
+      backSpeed: 50,
+      backDelay: 100,
+      smartBackspace: true,
+      loop: true,
+      showCursor: true,
+      cursorChar: " "
+    });
+
+    return () => {
+      typed.destroy();
+    };
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -109,7 +131,7 @@ export default function Home() {
       </div>
 
       <div className={styles.hero}>
-        <h1>Discover The Most Hyped <span>NFT Projects</span></h1>
+        <h1><span ref={el}></span>upcoming projects built on the <span>Solana Network</span></h1>
       </div>
 
       <div>
