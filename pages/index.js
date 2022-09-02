@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from "next/link"
 import {useState, useEffect, useRef} from "react";
@@ -68,13 +67,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>EarlyLink</title>
-        <meta name="description" content="Discover The Most Hyped NFT Projects" />
-        <meta name="author" content="Tudor Alexandru @exampleSOL"></meta>
-        <link rel="icon" href="/logo.png" />
-      </Head>
-
       <div className={styles.navbar}>
         <div className={styles.logo}>
           <img className={styles.earlyLinkLogo} src="/logo.png"/>
@@ -108,8 +100,10 @@ export default function Home() {
 
           <Link href="/">About Us</Link>
           <Link href="/">Our Discord Bot</Link>
-          <a href="#" className={styles.shareLink}>Share your link</a>
-
+          <div className={styles.shareLink}>
+            <Link href="/share-link">Share your link</Link>
+          </div>
+          
           {/* <button className={styles.explore}>
             Explore
             <svg width="7" height="4" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg">

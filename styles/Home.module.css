@@ -77,6 +77,7 @@
   border: none;
   border-radius: 20px;
   padding: 9px 20px;
+  padding-right: 5px;
 }
 
 .changeChain{
@@ -131,25 +132,6 @@
   color: var(--main);
 }
 
-.scroll {
-  display: block;
-  margin-top: 10px;
-}
-
-.circle {
-  animation: upDown 800ms infinite alternate-reverse;
-}
-
-@keyframes upDown {
-  0% {
-    -webkit-transform: translate(262px, 798px);
-    transform: translate(262px, 798px);
-  }
-  100% {
-    -webkit-transform: translate(262px, 830px);
-    transform: translate(262px, 830px);
-  }
-}
 
 .topPart {
   margin: 0 25px;
@@ -364,6 +346,10 @@
   .hamburger {
     display: flex;
   }
+
+  .shareLink {
+    margin-top: 15px;
+}
 }
 
 @media only screen and (max-width: 900px){

@@ -1,0 +1,87 @@
+.title{
+    text-align: center;
+    font-size: 2.65rem;
+    margin-top: 80px;
+}
+
+.title span{
+    color: var(--main);
+}
+
+
+.form {
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.form div{
+    display: flex;
+    flex-direction: column;
+}
+
+.form div input, .form div textarea {
+    width: 450px;
+    padding: 15px 10px;
+    border-radius: 15px;
+    border: 1px solid var(--lightest);
+    background-color: transparent;
+    outline: none;
+    color: white;
+    font-size: 1.1rem;
+    padding-left: 17px;
+}
+
+.form div textarea {
+    height: 100%;
+    resize: none;
+}
+
+.form div label {
+    background-color: #03000E;
+    width: fit-content;
+    color: var(--lightest);
+    position: relative;
+    margin-left: 20px;
+    top: 40px;
+    font-size: 1.2rem;
+    transition: all 300ms linear;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 40px;
+}
+
+.submitBtn {
+  background: var(--main);
+  border: none;
+  border-radius: 20px;
+  padding: 9px 40px;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 20px;
+  color: white;
+  font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 970px){
+    .form {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr ;
+        grid-row-gap: 5px;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .form div input, .form div textarea {
+        width: 100%;
+    }
+
+    .form {
+        width: 95%;
+    }
+}
