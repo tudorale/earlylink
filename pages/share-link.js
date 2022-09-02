@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import styles from "../styles/Share.module.css";
 import {useState} from "react";
 
-function shareLink() {
+function ShareLink() {
 
     const [projectName, setProjectName] = useState("");
     const [twitter, setTwitter] = useState("");
@@ -83,4 +83,4 @@ function shareLink() {
   )
 }
 
-export default shareLink
+export default ShareLink
