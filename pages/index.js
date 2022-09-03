@@ -2,6 +2,7 @@ import styles from '../styles/Home.module.css'
 import Link from "next/link"
 import {useState, useEffect, useRef} from "react";
 import Typed from "typed.js";
+import axios from "axios"
 
 export default function Home() {
 
@@ -65,6 +66,19 @@ export default function Home() {
     };
   }, []);
 
+  // get data from api
+
+  const [data, setData] = useState("");
+
+  useEffect(() => {
+    axios.get("https://api.earlylink.io/votes")
+      .then(res => {
+        setData(res.data);
+      })
+
+  }, [])
+
+
   return (
     <div className={styles.container}>
       <div className={styles.navbar}>
@@ -104,17 +118,6 @@ export default function Home() {
           <div className={styles.shareLink}>
             <Link href="/share-link">Share your link</Link>
           </div>
-          
-          {/* <button className={styles.explore}>
-            Explore
-            <svg width="7" height="4" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 0L3.5 4L7 0H0Z" fill="white"/>
-            </svg>
-          </button> */}
-
-          {/* <button className={styles.listNFT}>
-            List an NFT
-          </button> */}
         
         </div>
         
@@ -145,296 +148,106 @@ export default function Home() {
               <div>DAO Votes</div>
           </div>
 
-          <div className={styles.row}>
-            <div><span className={styles.mobileInfo}>No.:</span>1</div>
-            <div className={styles.name}>
-              <span className={styles.mobileInfo}>Name:</span>
-              <img src="/project.png"/>
-              <p>Project Name</p>
-            </div>
-            <div className={styles.launched}><span className={styles.mobileInfo}>Status:</span>Launched</div>
-            <div className={styles.twitterNumbers}>
-              <span className={styles.mobileInfo}>Twitter:</span>
-              <p>3k</p>
-              <a href="#"><img src="/twitter.svg"/></a>
-            </div>
-            <div className={styles.discordNumbers}>
-              <span className={styles.mobileInfo}>Discord:</span>
-              <p>5k</p>
-              <a href="#"><img src="/discord.svg"/></a>
-            </div>
-            <div className={styles.daoVotes}>
-              <span className={styles.mobileInfo}>DAO Votes:</span>
-              <p>490</p>
-              <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_5_54)">
-                <path d="M12 4.5L13.7175 6.2175L10.0575 9.8775L7.0575 6.8775L1.5 12.4425L2.5575 13.5L7.0575 9L10.0575 12L14.7825 7.2825L16.5 9V4.5H12Z" fill="#00DC3E"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_5_54">
-                <rect width="18" height="18" fill="white"/>
-                </clipPath>
-                </defs>
-              </svg>
-            </div>
-          </div>
-          <div className={styles.line}></div>
+          {
+            data ? 
+              data.map((d, index) => (
+                <>
+                  <div className={styles.row} key={d.id}>
+                    <div><span className={styles.mobileInfo}>No.:</span>{index+1}</div>
+                    <div className={styles.name}>
+                      <span className={styles.mobileInfo}>Name:</span>
+                      <img src={`${d.projectImageUrl}`}/>
+                      <p>{d.projectName}</p>
+                    </div>
+                    <div className={styles.launched}><span className={styles.mobileInfo}>Status:</span>Launched</div>
+                    <div className={styles.twitterNumbers}>
+                      <span className={styles.mobileInfo}>Twitter:</span>
+                      <p>3k</p>
+                      <a href="#"><img src="/twitter.svg"/></a>
+                    </div>
+                    <div className={styles.discordNumbers}>
+                      <span className={styles.mobileInfo}>Discord:</span>
+                      <p>5k</p>
+                      <a href="#"><img src="/discord.svg"/></a>
+                    </div>
+                    <div className={styles.daoVotes}>
+                      <span className={styles.mobileInfo}>DAO Votes:</span>
+                      <p>{d.projectValue}</p>
+                      <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clipPath="url(#clip0_5_54)">
+                        <path d="M12 4.5L13.7175 6.2175L10.0575 9.8775L7.0575 6.8775L1.5 12.4425L2.5575 13.5L7.0575 9L10.0575 12L14.7825 7.2825L16.5 9V4.5H12Z" fill="#00DC3E"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_5_54">
+                        <rect width="18" height="18" fill="white"/>
+                        </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
+                  </div>
+                  <div className={styles.line} key={index}></div>
+                </>
+                )
+              )
 
-          <div className={styles.row}>
-            <div><span className={styles.mobileInfo}>No.:</span>1</div>
-            <div className={styles.name}>
-              <span className={styles.mobileInfo}>Name:</span>
-              <img src="/project.png"/>
-              <p>Project Name</p>
-            </div>
-            <div className={styles.launched}><span className={styles.mobileInfo}>Status:</span>Launched</div>
-            <div className={styles.twitterNumbers}>
-              <span className={styles.mobileInfo}>Twitter:</span>
-              <p>3k</p>
-              <a href="#"><img src="/twitter.svg"/></a>
-            </div>
-            <div className={styles.discordNumbers}>
-              <span className={styles.mobileInfo}>Discord:</span>
-              <p>5k</p>
-              <a href="#"><img src="/discord.svg"/></a>
-            </div>
-            <div className={styles.daoVotes}>
-              <span className={styles.mobileInfo}>DAO Votes:</span>
-              <p>490</p>
-              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_5_109)">
-                <path d="M12.6667 14.25L14.4796 12.4371L10.6162 8.57375L7.44958 11.7404L1.58333 5.86625L2.69958 4.75L7.44958 9.5L10.6162 6.33333L15.6037 11.3129L17.4167 9.5V14.25H12.6667Z" fill="#DC0000"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_5_109">
-                <rect width="19" height="19" fill="white"/>
-                </clipPath>
-                </defs>
-              </svg>
-            </div>
-          </div>
-          <div className={styles.line}></div>
-
-          <div className={styles.row}>
-            <div><span className={styles.mobileInfo}>No.:</span>1</div>
-            <div className={styles.name}>
-              <span className={styles.mobileInfo}>Name:</span>
-              <img src="/project.png"/>
-              <p>Project Name</p>
-            </div>
-            <div className={styles.upcoming}><span className={styles.mobileInfo}>Status:</span>Upcoming</div>
-            <div className={styles.twitterNumbers}>
-              <span className={styles.mobileInfo}>Twitter:</span>
-              <p>3k</p>
-              <a href="#"><img src="/twitter.svg"/></a>
-            </div>
-            <div className={styles.discordNumbers}>
-              <span className={styles.mobileInfo}>Discord:</span>
-              <p>5k</p>
-              <a href="#"><img src="/discord.svg"/></a>
-            </div>
-            <div className={styles.daoVotes}>
-              <span className={styles.mobileInfo}>DAO Votes:</span>
-              <p>490</p>
-              <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_5_54)">
-                <path d="M12 4.5L13.7175 6.2175L10.0575 9.8775L7.0575 6.8775L1.5 12.4425L2.5575 13.5L7.0575 9L10.0575 12L14.7825 7.2825L16.5 9V4.5H12Z" fill="#00DC3E"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_5_54">
-                <rect width="18" height="18" fill="white"/>
-                </clipPath>
-                </defs>
-              </svg>
-            </div>
-          </div>
-          <div className={styles.line}></div>
-
-          <div className={styles.row}>
-            <div><span className={styles.mobileInfo}>No.:</span>1</div>
-            <div className={styles.name}>
-              <span className={styles.mobileInfo}>Name:</span>
-              <img src="/project.png"/>
-              <p>Project Name</p>
-            </div>
-            <div className={styles.launched}><span className={styles.mobileInfo}>Status:</span>Launched</div>
-            <div className={styles.twitterNumbers}>
-              <span className={styles.mobileInfo}>Twitter:</span>
-              <p>3k</p>
-              <a href="#"><img src="/twitter.svg"/></a>
-            </div>
-            <div className={styles.discordNumbers}>
-              <span className={styles.mobileInfo}>Discord:</span>
-              <p>5k</p>
-              <a href="#"><img src="/discord.svg"/></a>
-            </div>
-            <div className={styles.daoVotes}>
-              <span className={styles.mobileInfo}>DAO Votes:</span>
-              <p>490</p>
-              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_5_109)">
-                <path d="M12.6667 14.25L14.4796 12.4371L10.6162 8.57375L7.44958 11.7404L1.58333 5.86625L2.69958 4.75L7.44958 9.5L10.6162 6.33333L15.6037 11.3129L17.4167 9.5V14.25H12.6667Z" fill="#DC0000"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_5_109">
-                <rect width="19" height="19" fill="white"/>
-                </clipPath>
-                </defs>
-              </svg>
-            </div>
-          </div>
-          <div className={styles.line}></div>
+            : <p style={{marginTop: "15px"}}>Loading projects...</p>
+          }
         </div>
 
         <div className={styles.table + " " + "productsTable"} style={products ? {display: "block"} : {display: "none"}}>
           <div className={styles.tableHeader}>
               <div>No.</div>
-              <div>Name</div>
+              <div>Product Name</div>
               <div style={{marginLeft: "13px"}}>Status</div>
               <div>Twitter</div>
               <div>Discord</div>
               <div>DAO Votes</div>
           </div>
 
-          <div className={styles.row}>
-            <div><span className={styles.mobileInfo}>No.:</span>1</div>
-            <div className={styles.name}>
-              <span className={styles.mobileInfo}>Name:</span>
-              <img src="/project.png"/>
-              <p>Product Name</p>
-            </div>
-            <div className={styles.launched}><span className={styles.mobileInfo}>Status:</span>Launched</div>
-            <div className={styles.twitterNumbers}>
-              <span className={styles.mobileInfo}>Twitter:</span>
-              <p>3k</p>
-              <a href="#"><img src="/twitter.svg"/></a>
-            </div>
-            <div className={styles.discordNumbers}>
-              <span className={styles.mobileInfo}>Discord:</span>
-              <p>5k</p>
-              <a href="#"><img src="/discord.svg"/></a>
-            </div>
-            <div className={styles.daoVotes}>
-              <span className={styles.mobileInfo}>DAO Votes:</span>
-              <p>490</p>
-              <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_5_54)">
-                <path d="M12 4.5L13.7175 6.2175L10.0575 9.8775L7.0575 6.8775L1.5 12.4425L2.5575 13.5L7.0575 9L10.0575 12L14.7825 7.2825L16.5 9V4.5H12Z" fill="#00DC3E"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_5_54">
-                <rect width="18" height="18" fill="white"/>
-                </clipPath>
-                </defs>
-              </svg>
-            </div>
-          </div>
-          <div className={styles.line}></div>
+          {
+            data ? 
+              data.map((d, index) => (
+                <>
+                  <div className={styles.row} key={d.id}>
+                    <div><span className={styles.mobileInfo}>No.:</span>{index+1}</div>
+                    <div className={styles.name}>
+                      <span className={styles.mobileInfo}>Product Name:</span>
+                      <img src={`${d.projectImageUrl}`}/>
+                      <p>{d.projectName}</p>
+                    </div>
+                    <div className={styles.launched}><span className={styles.mobileInfo}>Status:</span>Launched</div>
+                    <div className={styles.twitterNumbers}>
+                      <span className={styles.mobileInfo}>Twitter:</span>
+                      <p>3k</p>
+                      <a href="#"><img src="/twitter.svg"/></a>
+                    </div>
+                    <div className={styles.discordNumbers}>
+                      <span className={styles.mobileInfo}>Discord:</span>
+                      <p>5k</p>
+                      <a href="#"><img src="/discord.svg"/></a>
+                    </div>
+                    <div className={styles.daoVotes}>
+                      <span className={styles.mobileInfo}>DAO Votes:</span>
+                      <p>{d.projectValue}</p>
+                      <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clipPath="url(#clip0_5_54)">
+                        <path d="M12 4.5L13.7175 6.2175L10.0575 9.8775L7.0575 6.8775L1.5 12.4425L2.5575 13.5L7.0575 9L10.0575 12L14.7825 7.2825L16.5 9V4.5H12Z" fill="#00DC3E"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_5_54">
+                        <rect width="18" height="18" fill="white"/>
+                        </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
+                  </div>
+                  <div className={styles.line}></div>
+                </>
+                )
+              )
 
-          <div className={styles.row}>
-            <div><span className={styles.mobileInfo}>No.:</span>1</div>
-            <div className={styles.name}>
-              <span className={styles.mobileInfo}>Name:</span>
-              <img src="/project.png"/>
-              <p>Product Name</p>
-            </div>
-            <div className={styles.launched}><span className={styles.mobileInfo}>Status:</span>Launched</div>
-            <div className={styles.twitterNumbers}>
-              <span className={styles.mobileInfo}>Twitter:</span>
-              <p>3k</p>
-              <a href="#"><img src="/twitter.svg"/></a>
-            </div>
-            <div className={styles.discordNumbers}>
-              <span className={styles.mobileInfo}>Discord:</span>
-              <p>5k</p>
-              <a href="#"><img src="/discord.svg"/></a>
-            </div>
-            <div className={styles.daoVotes}>
-              <span className={styles.mobileInfo}>DAO Votes:</span>
-              <p>490</p>
-              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_5_109)">
-                <path d="M12.6667 14.25L14.4796 12.4371L10.6162 8.57375L7.44958 11.7404L1.58333 5.86625L2.69958 4.75L7.44958 9.5L10.6162 6.33333L15.6037 11.3129L17.4167 9.5V14.25H12.6667Z" fill="#DC0000"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_5_109">
-                <rect width="19" height="19" fill="white"/>
-                </clipPath>
-                </defs>
-              </svg>
-            </div>
-          </div>
-          <div className={styles.line}></div>
-
-          <div className={styles.row}>
-            <div><span className={styles.mobileInfo}>No.:</span>1</div>
-            <div className={styles.name}>
-              <span className={styles.mobileInfo}>Name:</span>
-              <img src="/project.png"/>
-              <p>Product Name</p>
-            </div>
-            <div className={styles.upcoming}><span className={styles.mobileInfo}>Status:</span>Upcoming</div>
-            <div className={styles.twitterNumbers}>
-              <span className={styles.mobileInfo}>Twitter:</span>
-              <p>3k</p>
-              <a href="#"><img src="/twitter.svg"/></a>
-            </div>
-            <div className={styles.discordNumbers}>
-              <span className={styles.mobileInfo}>Discord:</span>
-              <p>5k</p>
-              <a href="#"><img src="/discord.svg"/></a>
-            </div>
-            <div className={styles.daoVotes}>
-              <span className={styles.mobileInfo}>DAO Votes:</span>
-              <p>490</p>
-              <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_5_54)">
-                <path d="M12 4.5L13.7175 6.2175L10.0575 9.8775L7.0575 6.8775L1.5 12.4425L2.5575 13.5L7.0575 9L10.0575 12L14.7825 7.2825L16.5 9V4.5H12Z" fill="#00DC3E"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_5_54">
-                <rect width="18" height="18" fill="white"/>
-                </clipPath>
-                </defs>
-              </svg>
-            </div>
-          </div>
-          <div className={styles.line}></div>
-
-          <div className={styles.row}>
-            <div><span className={styles.mobileInfo}>No.:</span>1</div>
-            <div className={styles.name}>
-              <span className={styles.mobileInfo}>Name:</span>
-              <img src="/project.png"/>
-              <p>Product Name</p>
-            </div>
-            <div className={styles.launched}><span className={styles.mobileInfo}>Status:</span>Launched</div>
-            <div className={styles.twitterNumbers}>
-              <span className={styles.mobileInfo}>Twitter:</span>
-              <p>3k</p>
-              <a href="#"><img src="/twitter.svg"/></a>
-            </div>
-            <div className={styles.discordNumbers}>
-              <span className={styles.mobileInfo}>Discord:</span>
-              <p>5k</p>
-              <a href="#"><img src="/discord.svg"/></a>
-            </div>
-            <div className={styles.daoVotes}>
-              <span className={styles.mobileInfo}>DAO Votes:</span>
-              <p>490</p>
-              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_5_109)">
-                <path d="M12.6667 14.25L14.4796 12.4371L10.6162 8.57375L7.44958 11.7404L1.58333 5.86625L2.69958 4.75L7.44958 9.5L10.6162 6.33333L15.6037 11.3129L17.4167 9.5V14.25H12.6667Z" fill="#DC0000"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_5_109">
-                <rect width="19" height="19" fill="white"/>
-                </clipPath>
-                </defs>
-              </svg>
-            </div>
-          </div>
-          <div className={styles.line}></div>
+            : "wait"
+          }
         </div>
       </div>
 
