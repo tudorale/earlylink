@@ -1,0 +1,90 @@
+.daolist h1{
+    text-align: center;
+    margin-top: 80px;
+    font-size: 2.3rem;
+}
+
+.daolist h1 span{
+    color: var(--main);
+}
+
+.daoListTable{
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 80px;
+    padding-bottom: 50px;
+    position: relative;
+    left: 10px;
+}
+
+.dlTableHeader{
+    display: grid;
+    grid-template-columns: 100px 200px auto;
+    color: var(--lightest);
+    font-size: 1.1rem;
+    grid-column-gap: 10px;
+}
+
+.dao {
+    display: grid;
+    grid-template-columns: 100px 200px 90px;
+    color: white;
+    font-size: 1.1rem;
+    background: var(--lighter-bg);
+    border-radius: 30px;
+    margin-top: 20px;
+    padding:8px 20px;
+    margin-left: -20px;
+    grid-column-gap: 10px;
+}
+
+.daoLine{
+    width: 100%;
+    background: var(--lightest);
+    height: 1px;
+    margin-top: 20px;
+    margin-left: -9px;
+  }
+  
+.daoLine::after {
+    content: "";
+    width: 35px;
+    height: 3px;
+    background: var(--main);
+    position: absolute;
+    margin-top: -1px;
+    margin-left: 57px;
+    box-shadow: 0px 0.3px 5px var(--main);
+  }
+
+
+@media only screen and (max-width: 470px){
+    .dlTableHeader{
+        grid-template-columns: 70px 140px auto;
+    }
+    
+    .dao {
+        grid-template-columns: 70px 140px 90px;
+    }
+
+    .daolist h1{
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 370px){
+    .dlTableHeader{
+        grid-template-columns: 50px 90px auto;
+        font-size: 1rem;
+    }
+    
+    .dao {
+        grid-template-columns: 30px 130px 20px;
+        font-size: 1rem;
+    }
+    
+
+    .dlTableHeader div:nth-child(1){
+        margin-left: -15px;
+    }
+}

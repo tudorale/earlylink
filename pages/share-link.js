@@ -66,8 +66,8 @@ function ShareLink() {
                     <input id="discord" value={discord} type="text" onChange={(e) => setDiscord(e.target.value)} onFocus={() => handleInput("#discordLabel")} onBlur={() => handleInputBlur("#discordLabel", "#discord")}/>
                 </div>
                 <div>
-                    <label htmlFor="email" id="emailLabel" className={styles.label + " " + "label"}>Contact (email)</label>
-                    <input id="email" value={contact} type="email" onChange={(e) => setContact(e.target.value)} onFocus={() => handleInput("#emailLabel")} onBlur={() => handleInputBlur("#emailLabel", "#email")}/>
+                    <label htmlFor="discordContact" id="discordContactLabel" className={styles.label + " " + "label"}>Discord Contact (Name #1111)</label>
+                    <input id="discordContact" value={contact} type="text" onChange={(e) => setContact(e.target.value)} onFocus={() => handleInput("#discordContactLabel")} onBlur={() => handleInputBlur("#discordContactLabel", "#discordContact")}/>
                 </div>
             </div>
             <div>

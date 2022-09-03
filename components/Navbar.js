@@ -33,6 +33,7 @@ function Navbar() {
           <Link href="/">Home</Link>
           <Link href="/about-us">About Us</Link>
           <Link href="/discord-bot">Our Discord Bot</Link>
+          <Link href="/dao-list">DAOs list</Link>
           <div className={styles.shareLink}>
             <Link href="/share-link">Share your link</Link>
           </div>

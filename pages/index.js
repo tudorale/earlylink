@@ -100,6 +100,7 @@ export default function Home() {
 
           <Link href="/">About Us</Link>
           <Link href="/">Our Discord Bot</Link>
+          <Link href="/dao-list">DAOs list</Link>
           <div className={styles.shareLink}>
             <Link href="/share-link">Share your link</Link>
           </div>
