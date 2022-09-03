@@ -471,9 +471,6 @@
 }
 
 @media only screen and (max-width: 715px){
-  .row .name img {
-    display: none;
-  }
 
   .tableHeader {
     grid-template-columns: 40px 150px 110px 90px 90px 100px;
@@ -500,12 +497,17 @@
   .row{
     grid-template-columns: 1fr;
     width: 95%;
-    margin-left: 0;
     margin: 0 15px;
     padding-top: 20px;
+    margin-left: 10px;
   }
 
-  
+  .row .name img {
+    display: block;
+    width: 35px;
+    height: 35px;
+  }
+
   .row:hover{
     transform: none;
     background-color: #0c003a;
@@ -531,19 +533,27 @@
   }
 
   .row div:nth-child(1){
-  margin-left: 0px;
-}
-.row div:nth-child(4){
-  margin-left: 0px;
-}
+    margin-left: 0px;
+  }
 
-.row div:nth-child(5){
-  margin-left: 0px;
-}
+  .row div:nth-child(2){
+    margin-top: -7px;
+  }
 
-.row div:nth-child(6){
-  margin-left: 0px;
-}
+  .row div:nth-child(4){
+    margin-left: 0px;
+    margin-top: -5px;
+  }
+
+  .row div:nth-child(5){
+    margin-left: 0px;
+    margin-top: -18px;
+  }
+
+  .row div:nth-child(6){
+    margin-left: 0px;
+    margin-top: -22px;
+  }
 
 
 }
@@ -557,6 +567,10 @@
     width: 95%;
   }
 
+  .navbar{
+    padding-left: 5px;
+  }
+
   .break {
     display: block;
   }
@@ -564,11 +578,5 @@
   .heroTitle {
     font-size: 1.9rem;
     text-align: start;
-  }
-}
-
-@media only screen and (max-width: 400px){
-  .navbar{
-    padding-left: 10px;
   }
 }

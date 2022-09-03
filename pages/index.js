@@ -208,25 +208,25 @@ export default function Home() {
                 data.map((d, index) => (
                   <>
                     <div className={styles.row} onClick={() => PopUpProject(d.projectName, d.projectDescription, d.projectTwitterUrl, d.projectImageUrl, d.projectValue)} key={d.id}>
-                      <div><span className={styles.mobileInfo}>No.:</span>{index+1}</div>
+                      <div><span className={styles.mobileInfo}>No.:&nbsp;</span>{index+1}</div>
                       <div className={styles.name}>
-                        <span className={styles.mobileInfo}>Name:</span>
+                        <span className={styles.mobileInfo}>Name:&nbsp;</span>
                         <img src={`${d.projectImageUrl}`}/>
                         <p>{d.projectName}</p>
                       </div>
-                      <div className={styles.launched}><span className={styles.mobileInfo}>Status:</span>Launched</div>
+                      <div className={styles.launched}><span className={styles.mobileInfo}>Status:&nbsp;</span>Launched</div>
                       <div className={styles.twitterNumbers}>
-                        <span className={styles.mobileInfo}>Twitter:</span>
+                        <span className={styles.mobileInfo}>Twitter:&nbsp;</span>
                         <p>3k</p>
                         <a href="#"><img src="/twitter.svg"/></a>
                       </div>
                       <div className={styles.discordNumbers}>
-                        <span className={styles.mobileInfo}>Discord:</span>
+                        <span className={styles.mobileInfo}>Discord:&nbsp;</span>
                         <p>5k</p>
                         <a href="#"><img src="/discord.svg"/></a>
                       </div>
                       <div className={styles.daoVotes}>
-                        <span className={styles.mobileInfo}>DAO Votes:</span>
+                        <span className={styles.mobileInfo}>DAO Votes:&nbsp;</span>
                         <p>{d.projectValue}</p>
                         <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <g clipPath="url(#clip0_5_54)">
