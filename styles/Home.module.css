@@ -505,6 +505,12 @@
     padding-top: 20px;
   }
 
+  
+  .row:hover{
+    transform: none;
+    background-color: #0c003a;
+  }
+
   .table{
     width: 100%;
   }
