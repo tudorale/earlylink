@@ -277,12 +277,10 @@ export default function Home() {
                       <div className={styles.launched}><span className={styles.mobileInfo}>Status:</span>Launched</div>
                       <div className={styles.twitterNumbers}>
                         <span className={styles.mobileInfo}>Twitter:</span>
-                        <p>3k</p>
                         <a href="#"><img src="/twitter.svg"/></a>
                       </div>
                       <div className={styles.discordNumbers}>
                         <span className={styles.mobileInfo}>Discord:</span>
-                        <p>5k</p>
                         <a href="#"><img src="/discord.svg"/></a>
                       </div>
                       <div className={styles.daoVotes}>
