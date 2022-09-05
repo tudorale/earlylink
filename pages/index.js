@@ -136,8 +136,12 @@ export default function Home() {
 
         <div className={styles.navbar}>
           <div className={styles.logo}>
-            <img className={styles.earlyLinkLogo} src="/logo.png"/>
-            <p>EarlyLink</p>
+            <Link href="/">
+              <div style={{display: "flex", cursor: "pointer"}}>
+                <img className={styles.earlyLinkLogo} src="/logo.png"/>
+                <p>EarlyLink</p>
+              </div>
+            </Link>
             <a href="https://twitter.com/earlylinksol" target="_blank" rel="noreferrer"><img src="/twitter.svg"/></a>
             <a href="https://discord.gg/HZFPkX3r8j" target="_blank" rel="noreferrer"><img src="/discord.svg"/></a>
           </div>
@@ -162,12 +166,13 @@ export default function Home() {
 
             <div className={styles.ethereumChain + " " + "eth"}>
               <img src="/eth.png"/>
-              <abbr title="Coming Soon"><p>Ethereum</p></abbr>
+              <p>Ethereum</p>
+              <p className={styles.ethStatus}>(coming soon)</p>
             </div>
 
-            <Link href="/">About Us</Link>
-            <Link href="/">Our Discord Bot</Link>
-            <Link href="/dao-list">DAOs list</Link>
+            <Link href="/about-us">About Us</Link>
+            <Link href="https://discord.com/oauth2/authorize?client_id=994177521614589972&permissions=0&scope=applications.commands%20bot">Add Discord Bot</Link>
+            <Link href="/dao-list">DAOs trusting us</Link>
             <div className={styles.shareLink}>
               <Link href="/share-link">Share your link</Link>
             </div>
@@ -191,7 +196,7 @@ export default function Home() {
         <div>
           <div className={styles.topPart}>
             <button className={styles.changeTable + " " + "nftButton"} onClick={() => nftTable()}>NFTs Projects</button>
-            <button className={styles.changeTable + " " + "productsBtn"} onClick={() => productsTable()}>Products</button>
+            <button className={styles.changeTable + " " + "productsBtn"} onClick={() => productsTable()}>Apps and Products</button>
           </div>
 
           <div className={styles.table + " " + "nftsTable"} style={nfts ? {display: "block"} : {display: "none"}}>

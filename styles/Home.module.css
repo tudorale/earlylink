@@ -95,21 +95,36 @@
 
 .ethereumChain {
   background: var(--lighter-bg);
-  padding: 0px 20px;
+  padding: 0px 30px;
   display: flex;
   align-items: center;
   cursor: pointer;
   border-radius: 30px;
   position: absolute;
   margin-top: 120px;
-  margin-left: -29px;
+  margin-left: -47px;
   display: none;
+  padding-right: 50px;
+}
+
+.ethereumChain p:nth-child(2){
+  position: relative;
+  top: -8px;
+}
+
+.ethStatus{
+  position: absolute;
+  font-size: 0.9rem;
+  margin-left: 20px;
+  margin-top: 45px;
+  color: var(--lightest);
 }
 
 .ethereumChain img {
   width: 20px;
   height: 35px;
   margin-right: 10px;
+  margin-left: -10px;
 }
 
 .changeChain svg {
