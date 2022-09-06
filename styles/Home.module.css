@@ -10,6 +10,7 @@
   align-items: center;
   position: relative;
   z-index: 9999;
+  border-bottom: 1px solid var(--lightest);
 }
 
 .logo {
@@ -44,37 +45,6 @@
   color: white;
   font-size: 1.15rem;
   margin-right: 18px;
-}
-
-.explore {
-  background: none;
-  border: 1px solid var(--main);
-  border-radius: 20px;
-  color: white;
-  display: flex;
-  align-items: center;
-  padding: 9px 20px;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.explore svg {
-  width: 13px;
-  height: 13px;
-  margin-left: 10px;
-}
-
-.listNFT {
-  background: var(--main);
-  border: none;
-  border-radius: 20px;
-  color: white;
-  display: flex;
-  align-items: center;
-  padding: 9px 20px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin-left: 20px;
 }
 
 .shareLink {
@@ -141,7 +111,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .heroTitle{
@@ -677,7 +647,7 @@
   .projectName{
     flex-direction: column;
     display: flex;
-    align-items: start;
+    align-items: flex-start;
   }
 
   .popUpIcons{
@@ -707,7 +677,7 @@
 
   .heroTitle {
     font-size: 1.9rem;
-    text-align: start;
+    text-align: flex-start;
   }
 
   .breakDesktop{

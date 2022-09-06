@@ -159,8 +159,8 @@ export default function Home() {
               <p className={styles.ethStatus}>(coming soon)</p>
             </div>
 
-            <Link href="/about-us">About Us</Link>
-            <Link href="https://discord.com/oauth2/authorize?client_id=994177521614589972&permissions=0&scope=applications.commands%20bot">Add Discord Bot</Link>
+            <Link href="/faqs">FAQs</Link>
+            <a target="_blank" rel="noreferrer" href="https://discord.com/oauth2/authorize?client_id=994177521614589972&permissions=0&scope=applications.commands%20bot">Add Discord Bot</a>
             <Link href="/dao-list">DAOs trusting us</Link>
             <div className={styles.shareLink}>
               <Link href="/share-link">Share your link</Link>
