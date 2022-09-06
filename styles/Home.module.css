@@ -182,6 +182,9 @@
   display: grid;
   grid-template-columns: 150px 380px 140px 120px 120px 100px;
   align-items: center;
+  border: 1px solid var(--lightest);
+  padding: 10px 30px;
+  margin-left: -20px;
 }
 
 .tableHeader div{
@@ -246,7 +249,6 @@
 
 .row{
   background: var(--lighter-bg);
-  border-radius: 30px;
   margin-top: 20px;
   padding: 0 20px;
   margin-left: -20px;
@@ -262,12 +264,17 @@
 .row div:nth-child(1){
   margin-left: 10px;
 }
+
+.row div:nth-child(2){
+  margin-left: 10px;
+}
+
 .row div:nth-child(3){
-  margin-left: 25px;
+  margin-left: 33px;
 }
 
 .row div:nth-child(4){
-  margin-left: 5px;
+  margin-left: 15px;
 }
 
 .launched {
@@ -279,11 +286,11 @@
 }
 
 .row div:nth-child(5){
-  margin-left: 7px;
+  margin-left: 17px;
 }
 
 .row div:nth-child(6){
-  margin-left: 13px;
+  margin-left: 30px;
 }
 
 .line{
@@ -377,6 +384,7 @@
 .projectImage {
   width: 100%;
   height: 100%;
+  border-radius: 15px;
 }
 
 .projectName a img{
@@ -577,6 +585,10 @@
     margin: 0 15px;
     padding-top: 20px;
     margin-left: 10px;
+  }
+
+  .row div:nth-child(2){
+    margin-left: 0px;
   }
 
   .row .name img {
