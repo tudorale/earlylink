@@ -106,7 +106,7 @@ export default function Home() {
             <div className={styles.popUpIcons}>
               <a href={`${popUpTwitter}`}><img src="/twitter.svg" style={{width: "65px", height: "65px"}}/></a>
               <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-world" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                               <circle cx="12" cy="12" r="9" />
                               <line x1="3.6" y1="9" x2="20.4" y2="9" />
@@ -208,7 +208,7 @@ export default function Home() {
                       <div className={styles.website}>
                         <span className={styles.mobileInfo}>Website:&nbsp;</span>
                           <a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-world" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="12" r="9" />
                             <line x1="3.6" y1="9" x2="20.4" y2="9" />
