@@ -160,8 +160,11 @@ export default function Home() {
             </div>
 
             <Link href="/faqs">FAQs</Link>
-            <a target="_blank" rel="noreferrer" href="https://discord.com/oauth2/authorize?client_id=994177521614589972&permissions=0&scope=applications.commands%20bot">Add Discord Bot</a>
-            <Link href="/dao-list">DAOs trusting us</Link>
+            <a target="_blank" rel="noreferrer" 
+            href="https://discord.com/oauth2/authorize?client_id=994177521614589972&permissions=0&scope=applications.commands%20bot">
+              Discord Bot
+              </a>
+            <Link href="/dao-list">DAOs</Link>
             <div className={styles.shareLink}>
               <Link href="/share-link">Share your link</Link>
             </div>
