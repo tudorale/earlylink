@@ -57,6 +57,8 @@ export default function Home() {
   // get data from api
 
   const [data, setData] = useState("");
+  const [botUsers, setBotUsers] = useState("0");
+  const [discordServers, setDiscordServers] = useState("0");
 
   useEffect(() => {
     axios.get("https://api.earlylink.io/votes")
@@ -64,6 +66,11 @@ export default function Home() {
         setData(res.data);
       })
 
+    axios.get("https://api.earlylink.io/stats")
+    .then(res => {
+        setBotUsers(res.data.userCount);
+        setDiscordServers(res.data.serverCount);
+    })
   }, [])
 
   const [popUpName, setPopUpName] = useState("");
@@ -93,6 +100,7 @@ export default function Home() {
     let addon = document.querySelector(".addon");
     addon.style.display = "none"; 
   }
+
 
   return (
     <>
@@ -254,6 +262,20 @@ export default function Home() {
               : <p style={{marginTop: "15px"}}>Loading projects...</p>
             }
           </div>
+        </div>
+
+        
+        <div className={styles.banner}>
+            <div className={styles.bannerWrapper}>
+              <div>
+                <p>Discord Servers</p>
+                <p>+{discordServers}</p>
+              </div>
+              <div>
+                <p>Users</p>
+                <p>+{botUsers}</p>
+              </div>
+            </div>
         </div>
 
       </div>

@@ -1,5 +1,5 @@
 .container {
-  padding-bottom: 150px;
+  padding-bottom: 0px;
 }
 
 .navbar {
@@ -417,6 +417,46 @@
   display: none;
 }
 
+.banner {
+  width: 100%;
+  background: var(--lighter-bg);
+  margin-top: 140px;
+  border-top: 1px solid #28137c;
+}
+
+.bannerWrapper {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  padding: 50px 0px;
+  justify-content: center;
+  align-items: center;
+  padding-left: 80px;
+}
+
+.bannerWrapper div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  margin-right: 90px;
+}
+
+
+.bannerWrapper div p:nth-child(1){
+  color: var(--lightest);
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+.bannerWrapper div p:nth-child(2){
+  color: white;
+  font-size: 2.3rem;
+  font-weight: 600;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
 
 /*  RESPONSIVE */
 
@@ -637,6 +677,20 @@
 
 .break {
   display: none;
+}
+
+@media only screen and (max-width: 590px){
+  .bannerWrapper {
+    padding: 50px 0px;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .bannerWrapper div{
+    width: fit-content;
+    margin-right: 0px;
+  }
+  
 }
 
 @media only screen and (max-width: 530px){
