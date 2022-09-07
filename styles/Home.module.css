@@ -127,11 +127,10 @@
   color: var(--main);
 }
 
-
 .topPart {
   margin: 0 25px;
   display: flex;
-  margin-top: 80px;
+  margin-top: 40px;
   justify-content: center;
 }
 
@@ -143,9 +142,9 @@
 .table {
   margin: 0 auto;
   width: fit-content;
-  margin-top: 40px;
   position: relative;
   left: 10px;
+  top: -50px;
 }
 
 .tableHeader {
@@ -310,20 +309,16 @@
 
 
 .changeTable {
-  background-color: var(--main);
+  background-color: transparent;
   color: white;
   font-size: 1.2rem;
-  padding: 10px 25px;
+  padding: 5px 25px;
   border-radius: 25px;
   cursor: pointer;
-  margin-bottom: 12px;
+  margin-bottom: 0px;
   border: none;
   margin-right: 20px;
   border: 2px solid var(--main);
-}
-
-.topPart button:nth-child(2){
-  background: transparent;
 }
 
 .popUp {

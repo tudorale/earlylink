@@ -52,26 +52,41 @@ export default function Home() {
     return () => {
       typed.destroy();
     };
-  }, []);
+  });
 
   // get data from api
 
-  const [data, setData] = useState("");
   const [botUsers, setBotUsers] = useState("0");
   const [discordServers, setDiscordServers] = useState("0");
 
-  useEffect(() => {
-    axios.get("https://api.earlylink.io/votes")
+  const [data, setData] = useState("");
+
+  const [rankingTrigger, setRankingTrigger] = useState(false);
+  const [recentTrigger, setRecentTrigger] = useState(false);
+  const [newData, setNewData] = useState();
+
+  const fetchData = () => {
+    if(rankingTrigger == false && recentTrigger == false){
+      axios.get("https://api.earlylink.io/votes")
       .then(res => {
         setData(res.data);
       })
 
+    }else{
+      setData(newData)
+    }
     axios.get("https://api.earlylink.io/stats")
     .then(res => {
         setBotUsers(res.data.userCount);
         setDiscordServers(res.data.serverCount);
     })
-  }, [])
+
+    console.log(rankingTrigger,recentTrigger);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [rankingTrigger, recentTrigger])
 
   const [popUpName, setPopUpName] = useState("");
   const [popUpDescription, setPopUpDescription] = useState("");
@@ -101,6 +116,47 @@ export default function Home() {
     addon.style.display = "none"; 
   }
 
+  const recentProjects = () => {
+    let recentBtn = document.querySelector(".recentButton");
+    let rankingBtn = document.querySelector(".rankingButton");
+    recentBtn.style.background = "#8900F4";
+    rankingBtn.style.background = "transparent";
+
+
+    const time = Date.now();
+
+    let newArr = data
+    .sort((a, b) => {
+
+      const aTime = new Date(a.createdAt).getTime();
+      const bTime = new Date(b.createdAt).getTime();
+
+      const aDelta = Math.abs(time - aTime);
+      const bDelta = Math.abs(time - bTime);
+
+      return (aDelta - bDelta);
+    });
+
+    setRecentTrigger(true);
+    setRankingTrigger(false);
+    setNewData(newArr)
+  }
+
+  const rankingFunctionality = () => {
+    let recentBtn = document.querySelector(".recentButton");
+    let rankingBtn = document.querySelector(".rankingButton");
+    recentBtn.style.background = "transparent";
+    rankingBtn.style.background = "#8900F4";
+
+    let newD = data.sort((a,b) => {
+      return b.projectValue - a.projectValue;
+      }
+    );
+
+    setRankingTrigger(true);
+    setRecentTrigger(false);
+    setNewData(newD)
+  }
 
   return (
     <>
@@ -195,6 +251,11 @@ export default function Home() {
 
         <div>
 
+          <div className={styles.topPart}>
+            <button className={styles.changeTable + " " + "recentButton"} onClick={() =>recentProjects()}>Recent</button>
+            <button className={styles.changeTable + " " + "rankingButton"} onClick={rankingFunctionality}>Ranking</button>
+          </div>
+
           <div className={styles.table + " " + "nftsTable"} style={{marginTop: "70px"}}>
             <div className={styles.tableHeader}>
                 <div>No.</div>
@@ -204,12 +265,12 @@ export default function Home() {
                 <div>Discord</div>
                 <div>DAO Votes</div>
             </div>
-
+ 
             {
               data ? 
                 data.map((d, index) => (
-                  <>
-                    <div className={styles.row} onClick={() => PopUpProject(d.projectName, d.projectDescription, d.projectTwitterUrl, d.projectImageUrl, d.projectValue)} key={d.id}>
+                  <div key={d.id}>
+                    <div className={styles.row} onClick={() => PopUpProject(d.projectName, d.projectDescription, d.projectTwitterUrl, d.projectImageUrl, d.projectValue)} >
                       <div><span className={styles.mobileInfo}>No.:&nbsp;</span>{index+1}</div>
                       <div className={styles.name}>
                         <span className={styles.mobileInfo}>Name:&nbsp;</span>
@@ -255,7 +316,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className={styles.line} key={index}></div>
-                  </>
+                  </div>
                   )
                 )
 
