@@ -149,7 +149,7 @@
 
 .tableHeader {
   display: grid;
-  grid-template-columns: 150px 380px 140px 120px 120px 100px;
+  grid-template-columns: 150px 380px 150px 140px 120px 120px 100px;
   align-items: center;
   border: 1px solid var(--lightest);
   padding: 10px 30px;
@@ -163,7 +163,7 @@
 
 .row{
   display: grid;
-  grid-template-columns: 150px 380px 140px 120px 120px 100px;
+  grid-template-columns: 150px 380px 150px 140px 120px 120px 100px;
   align-items: center;
 }
 
@@ -239,11 +239,11 @@
 }
 
 .row div:nth-child(3){
-  margin-left: 33px;
+  margin-left:10px;
 }
 
 .row div:nth-child(4){
-  margin-left: 15px;
+  margin-left: 35px;
 }
 
 .launched {
@@ -259,7 +259,11 @@
 }
 
 .row div:nth-child(6){
-  margin-left: 30px;
+  margin-left: 20px;
+}
+
+.row div:nth-child(7){
+  margin-left: 40px;
 }
 
 .line{
@@ -511,18 +515,18 @@
 }
 }
 
-@media only screen and (max-width: 1075px){
+@media only screen and (max-width: 1250px){
 
   .tableHeader {
-    grid-template-columns: 80px 250px 140px 120px 120px 100px;
+    grid-template-columns: 80px 250px 120px 140px 120px 120px 100px;
   }
   
   .row{
-    grid-template-columns: 80px 250px 140px 120px 120px 100px;
+    grid-template-columns: 80px 250px 120px 140px 120px 120px 100px;
   }
 }
 
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 1025px){
   .heroTitle{
     font-size: 2rem;
     text-align: center;
@@ -535,11 +539,11 @@
   }
 
   .tableHeader {
-    grid-template-columns: 60px 200px 110px 90px 90px 100px;
+    grid-template-columns: 60px 200px 110px 110px 90px 90px 100px;
   }
   
   .row{
-    grid-template-columns: 60px 200px 110px 90px 90px 100px;
+    grid-template-columns: 60px 200px 110px 110px 90px 90px 100px;
   }
 
   .website a svg{
@@ -559,10 +563,10 @@
   }
 }
 
-@media only screen and (max-width: 715px){
+@media only screen and (max-width: 838px){
 
   .tableHeader {
-    grid-template-columns: 40px 150px 110px 90px 90px 100px;
+    grid-template-columns: 40px 150px 110px 110px 90px 90px 100px;
   }
   
   .tableHeader div{
@@ -570,7 +574,7 @@
   }
   
   .row{
-    grid-template-columns: 40px 150px 110px 90px 90px 100px;
+    grid-template-columns: 40px 150px 110px 110px 90px 90px 100px;
   }
 
   .row div {
@@ -582,7 +586,7 @@
   display: none;
 }
 
-@media only screen and (max-width: 650px){
+@media only screen and (max-width: 770px){
   .row{
     grid-template-columns: 1fr;
     width: 95%;
@@ -633,6 +637,15 @@
   .row div:nth-child(3) {
     margin-left: 0px;
     display: flex;
+    margin-top: -20px;
+    align-items: center;
+    margin-bottom: -15px;
+  }
+
+  .row div:nth-child(4) {
+    margin-left: 0px;
+    display: flex;
+    margin-top: 40px;
     align-items: center;
   }
 
@@ -660,11 +673,19 @@
 
   .row div:nth-child(5){
     margin-left: 0px;
+    margin-top: 0px;
   }
+
 
   .row div:nth-child(6){
     margin-left: 0px;
-    margin-top: -15px;
+    margin-top: -10px;
+  }
+
+  .row div:nth-child(7){
+    margin-left: 0px;
+    margin-top: -25px;
+
   }
 
 }

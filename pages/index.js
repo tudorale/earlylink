@@ -67,7 +67,7 @@ export default function Home() {
 
   const fetchData = () => {
     if(rankingTrigger == false && recentTrigger == false){
-      axios.get("https://api.earlylink.io/votes")
+      axios.get("https://earlylink.mrquartz99.ml/api/votes?key=Earlylink99")
       .then(res => {
         setData(res.data);
       })
@@ -75,7 +75,7 @@ export default function Home() {
     }else{
       setData(newData)
     }
-    axios.get("https://api.earlylink.io/stats")
+    axios.get("https://earlylink.mrquartz99.ml/api/stats?key=Earlylink99")
     .then(res => {
         setBotUsers(res.data.userCount);
         setDiscordServers(res.data.serverCount);
@@ -93,8 +93,10 @@ export default function Home() {
   const [popUpTwitter, setPopUpTwitter] = useState("");
   const [popUpImage, setPopUpImage] = useState("");
   const [popUpVotes, setPopUpVotes] = useState("");
+  const [popUpDiscord, setPopUpDiscord] = useState("");
+  const [popUpWebsite, setPopUpWebsite] = useState("");
 
-  const PopUpProject = (name, description, twitter, image, votes) => {
+  const PopUpProject = (name, description, twitter, image, votes, discord, website) => {
     let popUp = document.querySelector(".popUp");
     popUp.style.display = "block";
 
@@ -105,7 +107,9 @@ export default function Home() {
     setPopUpDescription(description);
     setPopUpTwitter(twitter)
     setPopUpImage(image);
-    setPopUpVotes(votes)
+    setPopUpVotes(votes);
+    setPopUpDiscord(discord);
+    setPopUpWebsite(website);
   }
 
   const closePopUp = () => {
@@ -143,13 +147,13 @@ export default function Home() {
   }
 
   const rankingFunctionality = () => {
-    let recentBtn = document.querySelector(".recentButton");
+    // let recentBtn = document.querySelector(".recentButton");
     let rankingBtn = document.querySelector(".rankingButton");
-    recentBtn.style.background = "transparent";
+    // recentBtn.style.background = "transparent";
     rankingBtn.style.background = "#8900F4";
 
     let newD = data.sort((a,b) => {
-      return b.projectValue - a.projectValue;
+      return b.upvotes - a.upvotes;
       }
     );
 
@@ -169,7 +173,7 @@ export default function Home() {
             <p>{popUpName}</p>
             <div className={styles.popUpIcons}>
               <a href={`${popUpTwitter}`}><img src="/twitter.svg" style={{width: "65px", height: "65px"}}/></a>
-              <a href="#">
+              <a href={`${popUpWebsite}`}>
                 <svg xmlns="http://www.w3.org/2000/svg"  width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                               <circle cx="12" cy="12" r="9" />
@@ -179,7 +183,7 @@ export default function Home() {
                               <path d="M12.5 3a17 17 0 0 1 0 18" />
                             </svg>
               </a>
-              <a href="#"><img src="/discord.svg"/></a>
+              <a href={`${popUpDiscord}`}><img src="/discord.svg"/></a>
             </div>
 
           </div>
@@ -252,7 +256,7 @@ export default function Home() {
         <div>
 
           <div className={styles.topPart}>
-            <button className={styles.changeTable + " " + "recentButton"} onClick={() =>recentProjects()}>Recent</button>
+            {/* <button className={styles.changeTable + " " + "recentButton"} onClick={() =>recentProjects()}>Recent</button> */}
             <button className={styles.changeTable + " " + "rankingButton"} onClick={rankingFunctionality}>Ranking</button>
           </div>
 
@@ -260,6 +264,7 @@ export default function Home() {
             <div className={styles.tableHeader}>
                 <div>No.</div>
                 <div>Name</div>
+                <div>Launched</div>
                 <div style={{marginLeft: "7px"}}>Website</div>
                 <div>Twitter</div>
                 <div>Discord</div>
@@ -270,16 +275,24 @@ export default function Home() {
               data ? 
                 data.map((d, index) => (
                   <div key={d.id}>
-                    <div className={styles.row} onClick={() => PopUpProject(d.projectName, d.projectDescription, d.projectTwitterUrl, d.projectImageUrl, d.projectValue)} >
+                    <div className={styles.row} onClick={() => PopUpProject(d.projectName, d.projectDescription, d.projectTwitterUrl, d.projectImageUrl, d.upvotes, d.projectDiscordUrl, d.projectWebsiteUrl)} >
                       <div><span className={styles.mobileInfo}>No.:&nbsp;</span>{index+1}</div>
                       <div className={styles.name}>
                         <span className={styles.mobileInfo}>Name:&nbsp;</span>
-                        <img src={`${d.projectImageUrl}`}/>
+                        <img src={`${d.projectLogoUrl}`}/>
                         <p>{d.projectName}</p>
+                      </div>
+                      <div className={styles.launched}>
+                      <span className={styles.mobileInfo}>Launched:&nbsp;</span>
+                        {d.launched ? 
+                          <p className={styles.launched}>Launched</p>
+                          :
+                          <p className={styles.upcoming}>Upcoming</p>
+                        }
                       </div>
                       <div className={styles.website}>
                         <span className={styles.mobileInfo}>Website:&nbsp;</span>
-                          <a href="#">
+                          <a href={`${d.projectWebsiteUrl}`}>
                           <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="12" r="9" />
@@ -298,12 +311,12 @@ export default function Home() {
                       </div>
                       <div className={styles.discordNumbers}>
                         <span className={styles.mobileInfo}>Discord:&nbsp;</span>
-                        <a href="#"><img src="/discord.svg"/></a>
+                        <a href={`${d.projectDiscordUrl}`}><img src="/discord.svg"/></a>
                       </div>
                       <div className={styles.daoVotes}>
                         <span className={styles.mobileInfo}>DAO Votes:&nbsp;</span>
-                        <p>{d.projectValue}</p>
-                        <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <p>{d.upvotes}</p>
+                        {d.upvotes >= d.downvotes ? <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <g clipPath="url(#clip0_5_54)">
                           <path d="M12 4.5L13.7175 6.2175L10.0575 9.8775L7.0575 6.8775L1.5 12.4425L2.5575 13.5L7.0575 9L10.0575 12L14.7825 7.2825L16.5 9V4.5H12Z" fill="#00DC3E"/>
                           </g>
@@ -312,7 +325,19 @@ export default function Home() {
                           <rect width="18" height="18" fill="white"/>
                           </clipPath>
                           </defs>
+                        </svg> : 
+                        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_5_109)">
+                          <path d="M12.6667 14.25L14.4796 12.4371L10.6162 8.57375L7.44958 11.7404L1.58333 5.86625L2.69958 4.75L7.44958 9.5L10.6162 6.33333L15.6037 11.3129L17.4167 9.5V14.25H12.6667Z" fill="#DC0000"/>
+                          </g>
+                          <defs>
+                          <clipPath id="clip0_5_109">
+                          <rect width="19" height="19" fill="white"/>
+                          </clipPath>
+                          </defs>
                         </svg>
+                          
+                        }
                       </div>
                     </div>
                     <div className={styles.line} key={index}></div>
