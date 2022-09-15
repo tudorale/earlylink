@@ -327,7 +327,7 @@ export default function Home() {
                           </defs>
                         </svg> : 
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <g clip-path="url(#clip0_5_109)">
+                          <g clipPath="url(#clip0_5_109)">
                           <path d="M12.6667 14.25L14.4796 12.4371L10.6162 8.57375L7.44958 11.7404L1.58333 5.86625L2.69958 4.75L7.44958 9.5L10.6162 6.33333L15.6037 11.3129L17.4167 9.5V14.25H12.6667Z" fill="#DC0000"/>
                           </g>
                           <defs>
