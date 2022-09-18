@@ -147,9 +147,9 @@ export default function Home() {
   }
 
   const rankingFunctionality = () => {
-    // let recentBtn = document.querySelector(".recentButton");
+    let recentBtn = document.querySelector(".recentButton");
     let rankingBtn = document.querySelector(".rankingButton");
-    // recentBtn.style.background = "transparent";
+    recentBtn.style.background = "transparent";
     rankingBtn.style.background = "#8900F4";
 
     let newD = data.sort((a,b) => {
@@ -256,7 +256,7 @@ export default function Home() {
         <div>
 
           <div className={styles.topPart}>
-            {/* <button className={styles.changeTable + " " + "recentButton"} onClick={() =>recentProjects()}>Recent</button> */}
+            <button className={styles.changeTable + " " + "recentButton"} onClick={() =>recentProjects()}>Recent</button>
             <button className={styles.changeTable + " " + "rankingButton"} onClick={rankingFunctionality}>Ranking</button>
           </div>
 
