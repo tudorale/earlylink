@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
         <title>EarlyLink</title>
         <meta name="description" content="Discover The Most Hyped NFT Projects" />
         <meta name="author" content="Tudor Alexandru @exampleSOL"></meta>
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="/favicon.png" />
     </Head>
     <Component {...pageProps}/>
   

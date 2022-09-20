@@ -52,7 +52,7 @@ export default function Home() {
     return () => {
       typed.destroy();
     };
-  });
+  }, [el]);
 
   // get data from api
 
@@ -63,10 +63,11 @@ export default function Home() {
 
   const [rankingTrigger, setRankingTrigger] = useState(false);
   const [recentTrigger, setRecentTrigger] = useState(false);
+  const [launchedTrigger, setLaunchedTrigger] = useState(false);
   const [newData, setNewData] = useState();
 
   const fetchData = () => {
-    if(rankingTrigger == false && recentTrigger == false){
+    if(rankingTrigger == false && recentTrigger == false && launchedTrigger == false){
       axios.get("https://earlylink.mrquartz99.ml/api/votes?key=Earlylink99")
       .then(res => {
         setData(res.data);
@@ -80,8 +81,6 @@ export default function Home() {
         setBotUsers(res.data.userCount);
         setDiscordServers(res.data.serverCount);
     })
-
-    console.log(rankingTrigger,recentTrigger);
   }
 
   useEffect(() => {
@@ -120,12 +119,16 @@ export default function Home() {
     addon.style.display = "none"; 
   }
 
+  const [launchedStatus, setLaunchedStatus] = useState(false);
+
+
   const recentProjects = () => {
     let recentBtn = document.querySelector(".recentButton");
     let rankingBtn = document.querySelector(".rankingButton");
+    let launchedBtn = document.querySelector(".launchedButton");
+    launchedBtn.style.background = "transparent";
     recentBtn.style.background = "#8900F4";
     rankingBtn.style.background = "transparent";
-
 
     const time = Date.now();
 
@@ -143,12 +146,16 @@ export default function Home() {
 
     setRecentTrigger(true);
     setRankingTrigger(false);
-    setNewData(newArr)
+    setNewData(newArr);
+    setLaunchedTrigger(false);
+    setLaunchedStatus(true)
   }
 
   const rankingFunctionality = () => {
     let recentBtn = document.querySelector(".recentButton");
     let rankingBtn = document.querySelector(".rankingButton");
+    let launchedBtn = document.querySelector(".launchedButton");
+    launchedBtn.style.background = "transparent";
     recentBtn.style.background = "transparent";
     rankingBtn.style.background = "#8900F4";
 
@@ -160,6 +167,41 @@ export default function Home() {
     setRankingTrigger(true);
     setRecentTrigger(false);
     setNewData(newD)
+    setLaunchedTrigger(false);
+  }
+
+  const launchedFunctionality = () => {
+    setLaunchedStatus((prevState) => !prevState);
+    if(launchedStatus){
+      let recentBtn = document.querySelector(".recentButton");
+      let rankingBtn = document.querySelector(".rankingButton");
+      let launchedBtn = document.querySelector(".launchedButton");
+      recentBtn.style.background = "transparent";
+      rankingBtn.style.background = "transparent";
+      launchedBtn.style.background = "#8900F4"
+
+      let newD = data.filter((data) => {
+        return data.launched == true;
+        }
+      );
+
+      setRankingTrigger(false);
+      setRecentTrigger(false);
+      setLaunchedTrigger(true)
+      setNewData(newD)
+    }else{
+      let launchedBtn = document.querySelector(".launchedButton");
+      launchedBtn.style.background = "transparent";
+
+      setRankingTrigger(false);
+      setRecentTrigger(false);
+      setLaunchedTrigger(false)
+
+      axios.get("https://earlylink.mrquartz99.ml/api/votes?key=Earlylink99")
+      .then(res => {
+        setData(res.data);
+      })
+    }
   }
 
   return (
@@ -196,7 +238,6 @@ export default function Home() {
             <Link href="/">
               <div style={{display: "flex", cursor: "pointer"}}>
                 <img className={styles.earlyLinkLogo} src="/logo.png"/>
-                <p>EarlyLink</p>
               </div>
             </Link>
             <a href="https://twitter.com/earlylinksol" target="_blank" rel="noreferrer"><img src="/twitter.svg"/></a>
@@ -258,6 +299,7 @@ export default function Home() {
           <div className={styles.topPart}>
             <button className={styles.changeTable + " " + "recentButton"} onClick={() =>recentProjects()}>Recent</button>
             <button className={styles.changeTable + " " + "rankingButton"} onClick={rankingFunctionality}>Ranking</button>
+            <button className={styles.changeTable + " " + "launchedButton"} onClick={launchedFunctionality}>Launched</button>
           </div>
 
           <div className={styles.table + " " + "nftsTable"} style={{marginTop: "70px"}}>

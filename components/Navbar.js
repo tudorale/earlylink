@@ -23,7 +23,6 @@ function Navbar() {
           <Link href="/">
               <div style={{display: "flex", cursor: "pointer"}}>
                 <img className={styles.earlyLinkLogo} src="/logo.png"/>
-                <p>EarlyLink</p>
               </div>
           </Link>
           <a href="https://twitter.com/earlylinksol" target="_blank" rel="noreferrer"><img src="/twitter.svg"/></a>
