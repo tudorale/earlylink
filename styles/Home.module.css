@@ -126,6 +126,7 @@
   display: flex;
   margin-top: 40px;
   justify-content: center;
+  margin-left: 45px;
 }
 
 .topPart p:nth-child(1){
@@ -693,6 +694,7 @@
     padding: 50px 0px;
     flex-direction: column;
     margin: 0 auto;
+    align-items: center;
   }
 
   .bannerWrapper div{
@@ -745,5 +747,16 @@
 
   .breakDesktop{
     display: none;
+  }
+}
+
+@media only screen and (max-width: 435px){
+  .topPart {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .topPart button{
+    margin-top: 10px;
   }
 }
