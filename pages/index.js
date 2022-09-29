@@ -68,7 +68,7 @@ export default function Home() {
 
   const fetchData = () => {
     if(rankingTrigger == false && recentTrigger == false && launchedTrigger == false){
-      axios.get("https://earlylink.mrquartz99.ml/api/votes?key=Earlylink99")
+      axios.get("https://api.earlylink.io/votes")
       .then(res => {
         setData(res.data);
       })
@@ -76,7 +76,7 @@ export default function Home() {
     }else{
       setData(newData)
     }
-    axios.get("https://earlylink.mrquartz99.ml/api/stats?key=Earlylink99")
+    axios.get("https://api.earlylink.io/stats")
     .then(res => {
         setBotUsers(res.data.userCount);
         setDiscordServers(res.data.serverCount);
