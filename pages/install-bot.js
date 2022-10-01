@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 
-function installbot() {
+function Installbot() {
     useEffect(() =>{
         let a= document.createElement('a');
         a.href="https://discord.com/oauth2/authorize?client_id=994177521614589972&permissions=0&scope=applications.commands%20bot"
@@ -8,4 +8,4 @@ function installbot() {
     }, [])
 }
 
-export default installbot
+export default Installbot
