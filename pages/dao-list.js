@@ -8,7 +8,7 @@ function DaoList() {
     const [data, setData] = useState("");
 
     useEffect(() =>{
-        axios.get("https://earlylink-api.vercel.app/api/daos?key=Earlylink99")
+        axios.get("https://api.earlylink.io/dao")
         .then(res => {
             setData(res.data)
         })
