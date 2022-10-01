@@ -19,16 +19,31 @@
 }
 
 .earlyLinkLogo {
-  width: 150px;
-  height: 45px;
-  margin-right: 10px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
 }
 
-.logo a img {
+.earlyLinkLogo img {
+  width: 60px;
+  height: 60px;
+}
+
+.earlyLinkLogo p{
+  font-size: 1.25rem;
+  margin-left: 5px;
+}
+
+.navIconsWrapper{
+  displaY: flex;
+  align-items: center;
+}
+
+.navIconsWrapper a img {
   width: 30px;
-  margin-right: 15px;
   margin-top: 10px;
 }
+
 
 .rightSide {
   display: flex;
@@ -117,16 +132,20 @@
   padding: 0 15px;
 }
 
-.hero span:nth-child(1){
+.heroTitle span{
+  color: var(--main);
+}
+
+.heroTitle div {
   color: var(--main);
 }
 
 .topPart {
   margin: 0 25px;
   display: flex;
-  margin-top: 40px;
-  justify-content: center;
-  margin-left: 45px;
+  margin-top: 60px;
+  justify-content: left;
+  margin-left: 65px;
 }
 
 .topPart p:nth-child(1){

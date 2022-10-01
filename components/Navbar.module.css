@@ -9,20 +9,30 @@
     border-bottom: 1px solid var(--lightest);
   }
   
-  .logo {
+  .earlyLinkLogo {
     display: flex;
+    cursor: pointer;
     align-items: center;
   }
   
-  .earlyLinkLogo {
-    width: 150px;
-    height: 45px;
-    margin-right: 10px;
+  .earlyLinkLogo img {
+    width: 60px;
+    height: 60px;
   }
   
-  .logo a img {
+  .earlyLinkLogo p{
+    font-size: 1.25rem;
+    margin-left: 5px;
+  }
+  
+
+  .navIconsWrapper{
+    displaY: flex;
+    align-items: center;
+  }
+  
+  .navIconsWrapper a img {
     width: 30px;
-    margin-right: 15px;
     margin-top: 10px;
   }
   
