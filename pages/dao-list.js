@@ -1,8 +1,8 @@
 import Navbar from "../components/Navbar";
 import styles from "../styles/Daolist.module.css";
-import {daolist} from "./api/daolist"
 import {useEffect, useState} from "react";
 import axios from "axios"
+
 function DaoList() {
 
     const [data, setData] = useState("");
