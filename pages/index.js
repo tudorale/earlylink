@@ -238,7 +238,6 @@ export default function Home() {
             <Link href="/">
               <div className={styles.earlyLinkLogo}>
                 <img src="/logo.png"/>
-                <p>Earlylink.</p>
               </div>
             </Link>
           </div>
