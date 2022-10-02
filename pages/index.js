@@ -38,7 +38,7 @@ export default function Home() {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ["Discover", "Dive in", "Invest in"],
+      strings: ["Network", "Blockchain",],
       startDelay: 300,
       typeSpeed: 180,
       backSpeed: 50,
@@ -236,12 +236,11 @@ export default function Home() {
         <div className={styles.navbar}>
           <div className={styles.logo}>
             <Link href="/">
-              <div style={{display: "flex", cursor: "pointer"}}>
-                <img className={styles.earlyLinkLogo} src="/logo.png"/>
+              <div className={styles.earlyLinkLogo}>
+                <img src="/logo.png"/>
+                <p>Earlylink.</p>
               </div>
             </Link>
-            <a href="https://twitter.com/earlylinksol" target="_blank" rel="noreferrer"><img src="/twitter.svg"/></a>
-            <a href="https://discord.gg/HZFPkX3r8j" target="_blank" rel="noreferrer"><img src="/discord.svg"/></a>
           </div>
 
           <div className={styles.rightSide + " " + "menu"}>
@@ -268,14 +267,13 @@ export default function Home() {
               <p className={styles.ethStatus}>(coming soon)</p>
             </div>
 
-            <Link href="/faqs">FAQs</Link>
-            <a target="_blank" rel="noreferrer" 
-            href="https://discord.com/oauth2/authorize?client_id=994177521614589972&permissions=0&scope=applications.commands%20bot">
-              Discord Bot
-              </a>
+            <Link href="/about">About</Link>
+            <Link href="/install-bot">Discord Bot</Link>
             <Link href="/dao-list">DAOs</Link>
-            <div className={styles.shareLink}>
-              <Link href="/share-link">Share your link</Link>
+
+            <div className={styles.navIconsWrapper}>
+              <a href="https://twitter.com/earlylinksol" target="_blank" rel="noreferrer"><img src="/twitter.svg"/></a>
+              <a href="https://discord.gg/HZFPkX3r8j" target="_blank" rel="noreferrer"><img src="/discord.svg"/></a>
             </div>
           
           </div>
@@ -289,8 +287,8 @@ export default function Home() {
 
         <div className={styles.hero}>
           <div className={styles.heroTitle}>
-            <span ref={el}></span> upcoming<br className={styles.break}/> projects<br className={styles.breakDesktop}/>
-            launching on the Solana Network
+            Discover upcoming<br className={styles.break}/> projects<br className={styles.breakDesktop}/>
+            launching on the <div style={{display: "inline"}}>Solana</div> <span ref={el}></span>
           </div>
         </div>
 
