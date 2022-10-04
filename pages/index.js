@@ -71,6 +71,7 @@ export default function Home() {
       axios.get("https://api.earlylink.io/votes")
       .then(res => {
         setData(res.data);
+        console.log(res.data)
       })
 
     }else{
@@ -135,8 +136,8 @@ export default function Home() {
     let newArr = data
     .sort((a, b) => {
 
-      const aTime = new Date(a.createdAt).getTime();
-      const bTime = new Date(b.createdAt).getTime();
+      const aTime = new Date(a._doc.createdAt).getTime();
+      const bTime = new Date(b._doc.createdAt).getTime();
 
       const aDelta = Math.abs(time - aTime);
       const bDelta = Math.abs(time - bTime);
@@ -160,7 +161,7 @@ export default function Home() {
     rankingBtn.style.background = "#8900F4";
 
     let newD = data.sort((a,b) => {
-      return b.upvotes - a.upvotes;
+      return b._doc.upvotes - a._doc.upvotes;
       }
     );
 
@@ -181,7 +182,7 @@ export default function Home() {
       launchedBtn.style.background = "#8900F4"
 
       let newD = data.filter((data) => {
-        return data.launched == true;
+        return data._doc.launched == true;
         }
       );
 
@@ -197,7 +198,7 @@ export default function Home() {
       setRecentTrigger(false);
       setLaunchedTrigger(false)
 
-      axios.get("https://earlylink.mrquartz99.ml/api/votes?key=Earlylink99")
+      axios.get("https://api.earlylink.io/votes")
       .then(res => {
         setData(res.data);
       })
@@ -313,17 +314,17 @@ export default function Home() {
             {
               data ? 
                 data.map((d, index) => (
-                  <div key={d.id}>
-                    <div className={styles.row} onClick={() => PopUpProject(d.projectName, d.projectDescription, d.projectTwitterUrl, d.projectImageUrl, d.upvotes, d.projectDiscordUrl, d.projectWebsiteUrl)} >
+                  <div key={d._doc.id}>
+                    <div className={styles.row} onClick={() => PopUpProject(d._doc.projectName, d._doc.projectDescription, d._doc.projectTwitterUrl, d._doc.projectImageUrl, d._doc.upvotes, d._doc.projectDiscordUrl, d._doc.projectWebsiteUrl)} >
                       <div><span className={styles.mobileInfo}>No.:&nbsp;</span>{index+1}</div>
                       <div className={styles.name}>
                         <span className={styles.mobileInfo}>Name:&nbsp;</span>
-                        <img src={`${d.projectLogoUrl}`}/>
-                        <p>{d.projectName}</p>
+                        <img src={`${d._doc.projectLogoUrl}`}/>
+                        <p>{d._doc.projectName}</p>
                       </div>
                       <div className={styles.launched}>
                       <span className={styles.mobileInfo}>Launched:&nbsp;</span>
-                        {d.launched ? 
+                        {d._doc.launched ? 
                           <p className={styles.launched}>Launched</p>
                           :
                           <p className={styles.upcoming}>Upcoming</p>
@@ -331,7 +332,7 @@ export default function Home() {
                       </div>
                       <div className={styles.website}>
                         <span className={styles.mobileInfo}>Website:&nbsp;</span>
-                          <a href={`${d.projectWebsiteUrl}`} target="_blank" rel="noreferrer">
+                          <a href={`${d._doc.projectWebsiteUrl}`} target="_blank" rel="noreferrer">
                           <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="12" r="9" />
@@ -344,18 +345,18 @@ export default function Home() {
                         </div>
                       <div className={styles.twitterNumbers}>
                         <span className={styles.mobileInfo}>Twitter:&nbsp;</span>
-                        <a href={`${d.projectTwitterUrl}`} target="_blank" rel="noreferrer">
+                        <a href={`${d._doc.projectTwitterUrl}`} target="_blank" rel="noreferrer">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
                         </a>
                       </div>
                       <div className={styles.discordNumbers}>
                         <span className={styles.mobileInfo}>Discord:&nbsp;</span>
-                        <a href={`${d.projectDiscordUrl}`} target="_blank" rel="noreferrer"><img src="/discord.svg"/></a>
+                        <a href={`${d._doc.projectDiscordUrl}`} target="_blank" rel="noreferrer"><img src="/discord.svg"/></a>
                       </div>
                       <div className={styles.daoVotes}>
                         <span className={styles.mobileInfo}>DAO Votes:&nbsp;</span>
-                        <p>{d.upvotes}</p>
-                        {d.upvotes >= d.downvotes ? <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <p>{d._doc.upvotes}</p>
+                        {d._doc.upvotes >= d._doc.downvotes ? <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <g clipPath="url(#clip0_5_54)">
                           <path d="M12 4.5L13.7175 6.2175L10.0575 9.8775L7.0575 6.8775L1.5 12.4425L2.5575 13.5L7.0575 9L10.0575 12L14.7825 7.2825L16.5 9V4.5H12Z" fill="#00DC3E"/>
                           </g>
