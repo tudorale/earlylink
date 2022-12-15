@@ -1,46 +1,54 @@
 .navbar {
-    width: 100%;
-    padding: 10px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 9999;
-    border-bottom: 1px solid var(--lightest);
-  }
-  
-  .earlyLinkLogo {
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-  }
-  
-  .earlyLinkLogo img {
-    width: 180px;
-    height: 50px;
-  }
-  
+  width: 100%;
+  padding: 0px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 9999;
+  border-bottom: 1px solid rgb(80, 80, 80);
+}
 
-  .navIconsWrapper{
-    displaY: flex;
-    align-items: center;
-  }
-  
-  .navIconsWrapper a img {
-    width: 30px;
-    margin-top: 10px;
-  }
-  
-  .rightSide {
-    display: flex;
-    align-items: center;
-  }
-  
-  .rightSide a {
-    color: white;
-    font-size: 1.15rem;
-    margin-right: 25px;
-  }
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.earlyLinkLogo {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+
+.earlyLinkLogo img {
+  width: 150px;
+  height: 40px;
+}
+
+.navIconsWrapper{
+  displaY: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.navIconsWrapper a svg {
+  width: 30px;
+  margin-top: 10px;
+  margin-left: -15px;
+  stroke:rgb(153, 153, 153);
+}
+
+
+.rightSide {
+  display: flex;
+  align-items: center;
+}
+
+.rightSide a {
+  color: rgb(153, 153, 153);
+  font-size: 1.15rem;
+  margin-right: 25px;
+}
   
   
   .shareLink a{

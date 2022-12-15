@@ -4,13 +4,13 @@
 
 .navbar {
   width: 100%;
-  padding: 10px 25px;
+  padding: 0px 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 9999;
-  border-bottom: 1px solid var(--lightest);
+  border-bottom: 1px solid rgb(80, 80, 80);
 }
 
 .logo {
@@ -25,18 +25,21 @@
 }
 
 .earlyLinkLogo img {
-  width: 180px;
-  height: 50px;
+  width: 150px;
+  height: 40px;
 }
 
 .navIconsWrapper{
   displaY: flex;
   align-items: center;
+  margin-left: 10px;
 }
 
-.navIconsWrapper a img {
+.navIconsWrapper a svg {
   width: 30px;
   margin-top: 10px;
+  margin-left: -15px;
+  stroke:rgb(153, 153, 153);
 }
 
 
@@ -46,7 +49,7 @@
 }
 
 .rightSide a {
-  color: white;
+  color: rgb(153, 153, 153);
   font-size: 1.15rem;
   margin-right: 25px;
 }
@@ -59,121 +62,119 @@
   padding-right: 5px;
 }
 
-.changeChain{
-  background: var(--lighter-bg);
-  padding: 5px 10px;
-  padding-right: 5px;
+
+.filters, .blockchains{
   display: flex;
   align-items: center;
-  cursor: pointer;
-  margin-right: 15px;
-  border-radius: 15px;
-}
-
-.ethereumChain {
-  background: var(--lighter-bg);
-  padding: 0px 30px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 30px;
-  position: absolute;
-  margin-top: 120px;
-  margin-left: -47px;
-  display: none;
-  padding-right: 50px;
-}
-
-.ethereumChain p:nth-child(2){
-  position: relative;
-  top: -8px;
-}
-
-.ethStatus{
-  position: absolute;
-  font-size: 0.9rem;
-  margin-left: 20px;
-  margin-top: 45px;
-  color: var(--lightest);
-}
-
-.ethereumChain img {
-  width: 20px;
-  height: 35px;
-  margin-right: 10px;
-  margin-left: -10px;
-}
-
-.changeChain svg {
-  width: 35px;
-  height: 35px;
-}
-
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  margin-top: 60px;
-}
-
-.heroTitle{
-  font-size: 2.4rem;
-  width: fit-content;
-  margin: 0 auto;
-  text-align: center;
-  font-weight: 600;
-  padding: 0 15px;
-}
-
-.heroTitle span{
-  color: var(--main);
-}
-
-.heroTitle div {
-  color: var(--main);
 }
 
 .topPart {
-  margin: 0 25px;
   display: flex;
-  margin-top: 60px;
-  justify-content: center;
-  margin-left: 65px;
+  margin-top: 30px;
+  justify-content: space-between;
+  margin-left: -25px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgb(80, 80, 80);
 }
 
-.topPart p:nth-child(1){
-  font-size: 1.25rem;
-  margin-bottom: 8px;
+.changeTable {
+  margin-bottom: 0px;
+  padding-bottom: 20px;
+  margin-right: 20px;
+  position: relative;
+  top: 1px;
+  color: rgb(153, 153, 153);
+  font-weight: 400;
 }
+
+.changeTable button{
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.chains{
+  margin-bottom: 0px;
+  padding-bottom: 20px;
+  margin-right: 20px;
+  position: relative;
+  top: 1px;
+  color: rgb(153, 153, 153);
+  font-weight: 400;
+}
+
+.chains button{
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.chains button .solana{
+  width: 20px;
+  margin-right: 10px;
+  position: relative;
+}
+
+.chains button {
+  display: flex;
+  align-items: center;
+}
+
+.chains button .eth{
+  width: 15px;
+  margin-right: 10px;
+  position: relative;
+}
+
+.chains button svg{
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
 
 .table {
   margin: 0 auto;
-  width: fit-content;
+  width: 95%;
   position: relative;
   left: 10px;
   top: -50px;
 }
 
+.line{
+  width: 100%;
+  height: 1px;
+  background-color: rgb(80, 80, 80);
+}
+
 .tableHeader {
   display: grid;
-  grid-template-columns: 150px 380px 150px 140px 120px 120px 100px;
+  grid-template-columns: 150px 380px 150px 140px 140px 120px 120px 100px;
   align-items: center;
-  border: 1px solid var(--lightest);
-  padding: 10px 30px;
-  margin-left: -20px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  margin-left: -25px;
+  border-bottom: 1px solid rgb(80, 80, 80);
 }
 
 .tableHeader div{
-  font-size: 1.1rem;
-  color: var(--lightest);
+  font-size: 1.05rem;
+  color: rgb(153, 153, 153);
 }
 
 .row{
   display: grid;
-  grid-template-columns: 150px 380px 150px 140px 120px 120px 100px;
+  grid-template-columns: 150px 380px 150px 140px 140px 120px 120px 100px;
   align-items: center;
+  background: none;
+  margin-top: 20px;
+  margin-left: -32px;
+  transition: all 250ms linear;
+  cursor: pointer;
 }
 
 .row div{
@@ -183,6 +184,13 @@
 .twitterNumbers, .discordNumbers, .daoVotes, .name {
   display: flex;
   align-items: center;
+}
+
+.projectBlockchain img{
+  width: 32px;
+  height: 32px;
+  position: relative;
+  top: 2px;
 }
 
 .daoVotes svg{
@@ -225,30 +233,16 @@
   margin-right: 10px;
 }
 
-.row{
-  background: var(--lighter-bg);
-  margin-top: 20px;
-  padding: 0 20px;
-  margin-left: -20px;
-  transition: all 250ms linear;
-  cursor: pointer;
-}
-
-.row:hover{
-  transform: scale(108%);
-  background-color: #0c003a;
-}
-
 .row div:nth-child(1){
   margin-left: 10px;
 }
 
 .row div:nth-child(2){
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .row div:nth-child(3){
-  margin-left:10px;
+  margin-left:3px;
 }
 
 .row div:nth-child(4){
@@ -264,34 +258,19 @@
 }
 
 .row div:nth-child(5){
-  margin-left: 17px;
+  margin-left: 33px;
 }
 
 .row div:nth-child(6){
-  margin-left: 20px;
+  margin-left: 12px;
 }
 
 .row div:nth-child(7){
-  margin-left: 40px;
+  margin-left: 12px;
 }
 
-.line{
-  width: 100%;
-  background: var(--lightest);
-  height: 1px;
-  margin-top: 25px;
-  margin-left: -10px;
-}
-
-.line::after {
-  content: "";
-  width: 35px;
-  height: 3px;
-  background: var(--main);
-  position: absolute;
-  margin-top: -1.2px;
-  margin-left: 57px;
-  box-shadow: 0px 0.3px 5px var(--main);
+.row div:nth-child(8){
+  margin-left: 26px;
 }
 
 .hamburger {
@@ -318,20 +297,6 @@
   position:absolute;
   cursor: pointer;
   display: none;
-}
-
-
-.changeTable {
-  background-color: transparent;
-  color: white;
-  font-size: 1.2rem;
-  padding: 5px 25px;
-  border-radius: 25px;
-  cursor: pointer;
-  margin-bottom: 0px;
-  border: none;
-  margin-right: 20px;
-  border: 2px solid var(--main);
 }
 
 .popUp {
@@ -428,8 +393,9 @@
 .banner {
   width: 100%;
   background: var(--lighter-bg);
-  margin-top: 140px;
   border-top: 1px solid #28137c;
+  position: relative;
+  top: 100px;
 }
 
 .bannerWrapper {

@@ -1,7 +1,6 @@
 import styles from '../styles/Home.module.css'
 import Link from "next/link"
-import {useState, useEffect, useRef} from "react";
-import Typed from "typed.js";
+import {useState, useEffect} from "react";
 import axios from "axios"
 
 export default function Home() {
@@ -21,62 +20,24 @@ export default function Home() {
 
   }
 
-  let changedChain = false;
-
-  const changeChain = () => {
-    changedChain = !changedChain;
-    let eth = document.querySelector(".eth")
-    if(changedChain){
-      eth.style.display = "flex";
-    }else{
-      eth.style.display = "none";
-    }
-  }
-
-
-  const el = useRef(null);
-
-  useEffect(() => {
-    const typed = new Typed(el.current, {
-      strings: ["Network", "Blockchain",],
-      startDelay: 300,
-      typeSpeed: 180,
-      backSpeed: 50,
-      backDelay: 100,
-      smartBackspace: true,
-      loop: true,
-      showCursor: true,
-      cursorChar: " "
-    });
-
-    return () => {
-      typed.destroy();
-    };
-  }, [el]);
-
   // get data from api
 
   const [botUsers, setBotUsers] = useState("0");
   const [discordServers, setDiscordServers] = useState("0");
 
-  const [data, setData] = useState("");
+  const [data, setData] = useState();
 
   const [rankingTrigger, setRankingTrigger] = useState(false);
   const [recentTrigger, setRecentTrigger] = useState(false);
   const [launchedTrigger, setLaunchedTrigger] = useState(false);
-  const [newData, setNewData] = useState();
 
   const fetchData = () => {
-    if(rankingTrigger == false && recentTrigger == false && launchedTrigger == false){
-      axios.get("https://api.earlylink.io/votes")
+    axios.get("https://api.earlylink.io/votes")
       .then(res => {
         setData(res.data);
-        console.log(res.data)
-      })
+    })
 
-    }else{
-      setData(newData)
-    }
+
     axios.get("https://api.earlylink.io/stats")
     .then(res => {
         setBotUsers(res.data.userCount);
@@ -84,9 +45,49 @@ export default function Home() {
     })
   }
 
+  const [allActive, setAllActive] = useState(true);
+  const [solanaActive, setSolanaActive] = useState(false);
+  const [ethActive, setEthActive] = useState(false);
+
+  const allProjects = () => {
+
+    setAllActive(true);
+    setSolanaActive(false);
+    setEthActive(false);
+
+    let allBtn = document.querySelector(".allProjects");
+    let solanaBtn = document.querySelector(".solanaProjects");
+    let ethBtn = document.querySelector(".ethProjects");
+
+    Object.assign(allBtn.style, active);
+    Object.assign(solanaBtn.style, unactive);
+    Object.assign(ethBtn.style, unactive);
+    allBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
+    solanaBtn.firstChild.style.textShadow = "none"
+    ethBtn.firstChild.style.textShadow = "none"
+
+    // filters
+    let recentBtn = document.querySelector(".recentButton");
+    let rankingBtn = document.querySelector(".rankingButton");
+    let launchedBtn = document.querySelector(".launchedButton");
+
+    Object.assign(recentBtn.style, unactive);
+    Object.assign(rankingBtn.style, unactive);
+    Object.assign(launchedBtn.style, unactive);
+    recentBtn.firstChild.style.textShadow = "none"
+    rankingBtn.firstChild.style.textShadow = "none"
+    launchedBtn.firstChild.style.textShadow = "none"
+
+    axios.get("https://api.earlylink.io/votes")
+      .then(res => {
+        setData(res.data);
+      })
+  }
+  
   useEffect(() => {
     fetchData();
-  }, [rankingTrigger, recentTrigger])
+    allProjects();
+  }, [])
 
   const [popUpName, setPopUpName] = useState("");
   const [popUpDescription, setPopUpDescription] = useState("");
@@ -122,22 +123,38 @@ export default function Home() {
 
   const [launchedStatus, setLaunchedStatus] = useState(false);
 
+  let active = {
+    borderBottom: "2px solid #8900F4",
+    color: "#8900F4"
+  }
+  
+  let unactive = {
+    borderBottom: "none",
+    color: "rgb(153, 153, 153)"
+  }
 
   const recentProjects = () => {
+    setRecentTrigger(true);
+
     let recentBtn = document.querySelector(".recentButton");
     let rankingBtn = document.querySelector(".rankingButton");
     let launchedBtn = document.querySelector(".launchedButton");
-    launchedBtn.style.background = "transparent";
-    recentBtn.style.background = "#8900F4";
-    rankingBtn.style.background = "transparent";
+
+    Object.assign(recentBtn.style, active);
+    Object.assign(rankingBtn.style, unactive);
+    Object.assign(launchedBtn.style, unactive);
+    recentBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
+    rankingBtn.firstChild.style.textShadow = "none"
+    launchedBtn.firstChild.style.textShadow = "none"
+
 
     const time = Date.now();
 
     let newArr = data
     .sort((a, b) => {
 
-      const aTime = new Date(a._doc.createdAt).getTime();
-      const bTime = new Date(b._doc.createdAt).getTime();
+      const aTime = new Date(a.createdAt).getTime();
+      const bTime = new Date(b.createdAt).getTime();
 
       const aDelta = Math.abs(time - aTime);
       const bDelta = Math.abs(time - bTime);
@@ -145,30 +162,42 @@ export default function Home() {
       return (aDelta - bDelta);
     });
 
-    setRecentTrigger(true);
     setRankingTrigger(false);
-    setNewData(newArr);
+    setData(newArr);
     setLaunchedTrigger(false);
     setLaunchedStatus(true)
+
+    console.log(data)
+    console.log(newArr)
   }
 
   const rankingFunctionality = () => {
     let recentBtn = document.querySelector(".recentButton");
     let rankingBtn = document.querySelector(".rankingButton");
     let launchedBtn = document.querySelector(".launchedButton");
-    launchedBtn.style.background = "transparent";
-    recentBtn.style.background = "transparent";
-    rankingBtn.style.background = "#8900F4";
 
-    let newD = data.sort((a,b) => {
-      return b._doc.upvotes - a._doc.upvotes;
-      }
-    );
+    Object.assign(rankingBtn.style, active);
+    Object.assign(recentBtn.style, unactive);
+    Object.assign(launchedBtn.style, unactive);
+    rankingBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
+    recentBtn.firstChild.style.textShadow = "none"
+    launchedBtn.firstChild.style.textShadow = "none"
 
-    setRankingTrigger(true);
-    setRecentTrigger(false);
-    setNewData(newD)
-    setLaunchedTrigger(false);
+    axios.get("https://api.earlylink.io/votes")
+    .then(res => {
+      setData(res.data);
+    }).then(() => {
+      let newD = data.sort((a,b) => {
+        return b.upvotes - a.upvotes;
+        }
+      );  
+
+      setRankingTrigger(true);
+      setRecentTrigger(false);
+      setData(newD)
+      setLaunchedTrigger(false);
+    })
+
   }
 
   const launchedFunctionality = () => {
@@ -177,22 +206,51 @@ export default function Home() {
       let recentBtn = document.querySelector(".recentButton");
       let rankingBtn = document.querySelector(".rankingButton");
       let launchedBtn = document.querySelector(".launchedButton");
-      recentBtn.style.background = "transparent";
-      rankingBtn.style.background = "transparent";
-      launchedBtn.style.background = "#8900F4"
 
-      let newD = data.filter((data) => {
-        return data._doc.launched == true;
+      Object.assign(launchedBtn.style, active);
+      Object.assign(rankingBtn.style, unactive);
+      Object.assign(recentBtn.style, unactive);
+      launchedBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
+      rankingBtn.firstChild.style.textShadow = "none"
+      recentBtn.firstChild.style.textShadow = "none"
+
+      axios.get("https://api.earlylink.io/votes")
+      .then(res => {
+        if(ethActive){
+          let newD = res.data.filter((data) => {
+            return data.blockchain == "Ethereum";
+            }
+          );
+          let extraNew = newD.filter((data) => {
+            return data.launched == true;
+            }
+          );
+          setData(extraNew);
+        }else if(solanaActive){
+          let newD = res.data.filter((data) => {
+            return data.blockchain == "Solana";
+            }
+          );
+          let extraNew = newD.filter((data) => {
+            return data.launched == true;
+            }
+          );
+          setData(extraNew);
         }
-      );
+        let newD = data.filter((data) => {
+          return data.launched == true;
+          }
+        );
+        setData(newD);
+      })
 
       setRankingTrigger(false);
       setRecentTrigger(false);
       setLaunchedTrigger(true)
-      setNewData(newD)
     }else{
       let launchedBtn = document.querySelector(".launchedButton");
-      launchedBtn.style.background = "transparent";
+      Object.assign(launchedBtn.style, unactive);
+      launchedBtn.firstChild.style.textShadow = "none"
 
       setRankingTrigger(false);
       setRecentTrigger(false);
@@ -200,9 +258,100 @@ export default function Home() {
 
       axios.get("https://api.earlylink.io/votes")
       .then(res => {
-        setData(res.data);
+        if(ethActive){
+          let newD = res.data.filter((data) => {
+            return data.blockchain == "Ethereum";
+            }
+          );
+          setData(newD);
+        }else if(solanaActive){
+          let newD = res.data.filter((data) => {
+            return data.blockchain == "Solana";
+            }
+          );
+          setData(newD);
+        }else{
+          setData(res.data);
+        }
       })
     }
+  }
+
+  const solanaProjects = () => {
+    setSolanaActive(true);
+    setEthActive(false);
+    setAllActive(false);
+    let allBtn = document.querySelector(".allProjects");
+    let solanaBtn = document.querySelector(".solanaProjects");
+    let ethBtn = document.querySelector(".ethProjects");
+
+    Object.assign(solanaBtn.style, active);
+    Object.assign(allBtn.style, unactive);
+    Object.assign(ethBtn.style, unactive);
+    solanaBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
+    allBtn.firstChild.style.textShadow = "none"
+    ethBtn.firstChild.style.textShadow = "none"
+
+
+    // filters
+    let recentBtn = document.querySelector(".recentButton");
+    let rankingBtn = document.querySelector(".rankingButton");
+    let launchedBtn = document.querySelector(".launchedButton");
+
+    Object.assign(rankingBtn.style, unactive);
+    Object.assign(recentBtn.style, unactive);
+    Object.assign(launchedBtn.style, unactive);
+    rankingBtn.firstChild.style.textShadow = "none"
+    recentBtn.firstChild.style.textShadow = "none"
+    launchedBtn.firstChild.style.textShadow = "none"
+
+    
+    axios.get("https://api.earlylink.io/votes")
+    .then(res => {
+      let newD = res.data.filter((data) => {
+        return data.blockchain == "Solana";
+        }
+      );
+      setData(newD);
+    })
+  }
+
+  const ethProjects = () => {
+    setSolanaActive(false);
+    setEthActive(true);
+    setAllActive(false);
+    let allBtn = document.querySelector(".allProjects");
+    let solanaBtn = document.querySelector(".solanaProjects");
+    let ethBtn = document.querySelector(".ethProjects");
+
+    Object.assign(ethBtn.style, active);
+    Object.assign(allBtn.style, unactive);
+    Object.assign(solanaBtn.style, unactive);
+    ethBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
+    allBtn.firstChild.style.textShadow = "none"
+    solanaBtn.firstChild.style.textShadow = "none"
+
+     // filters
+     let recentBtn = document.querySelector(".recentButton");
+     let rankingBtn = document.querySelector(".rankingButton");
+     let launchedBtn = document.querySelector(".launchedButton");
+ 
+     Object.assign(rankingBtn.style, unactive);
+     Object.assign(recentBtn.style, unactive);
+     Object.assign(launchedBtn.style, unactive);
+     rankingBtn.firstChild.style.textShadow = "none"
+     recentBtn.firstChild.style.textShadow = "none"
+     launchedBtn.firstChild.style.textShadow = "none" 
+    
+    axios.get("https://api.earlylink.io/votes")
+    .then(res => {
+      let newD = res.data.filter((data) => {
+        return data.blockchain == "Ethereum";
+        }
+      );
+      setData(newD);
+    })
+
   }
 
   return (
@@ -247,33 +396,28 @@ export default function Home() {
 
             <svg  className={styles.closeMenu + " " + "closeMenu"} onClick={handleMenu} clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
 
-            <div className={styles.changeChain} onClick={changeChain}>
-                <img src="/solana.png"/>
-                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g clipPath="url(#clip0_5_160)">
-                  <path d="M6 7.42859L9.33333 10.9207L12.6667 7.42859H6Z" fill="#8178A8"/>
-                  </g>
-                  <defs>
-                  <clipPath id="clip0_5_160">
-                  <rect width="16" height="16.7619" fill="white" transform="translate(0 0.0952454)"/>
-                  </clipPath>
-                  </defs>
-                </svg>
-            </div>
-
-            <div className={styles.ethereumChain + " " + "eth"}>
-              <img src="/eth.png"/>
-              <p>Ethereum</p>
-              <p className={styles.ethStatus}>(coming soon)</p>
-            </div>
-
             <Link href="/about">About</Link>
             <Link href="/install-bot">Discord Bot</Link>
             <Link href="/dao-list">DAOs</Link>
 
             <div className={styles.navIconsWrapper}>
-              <a href="https://twitter.com/earlylinksol" target="_blank" rel="noreferrer"><img src="/twitter.svg"/></a>
-              <a href="https://discord.gg/HZFPkX3r8j" target="_blank" rel="noreferrer"><img src="/discord.svg"/></a>
+              <a href="https://twitter.com/earlylinksol" target="_blank" rel="noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+                </svg>
+              </a>
+              <a href="https://discord.gg/HZFPkX3r8j" target="_blank" rel="noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <circle cx="9" cy="12" r="1" />
+                  <circle cx="15" cy="12" r="1" />
+                  <path d="M7.5 7.5c3.5 -1 5.5 -1 9 0" />
+                  <path d="M7 16.5c3.5 1 6.5 1 10 0" />
+                  <path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-1 2.5" />
+                  <path d="M8.5 17c0 1 -1.356 3 -1.832 3c-1.429 0 -2.698 -1.667 -3.333 -3c-.635 -1.667 -.476 -5.833 1.428 -11.5c1.388 -1.015 2.782 -1.34 4.237 -1.5l1 2.5" />
+                </svg>
+              </a>
             </div>
           
           </div>
@@ -285,54 +429,86 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.hero}>
-          <div className={styles.heroTitle}>
-            Discover upcoming<br className={styles.break}/> projects<br className={styles.breakDesktop}/>
-            launching on the <div style={{display: "inline"}}>Solana</div> <span ref={el}></span>
-          </div>
-        </div>
-
         <div>
-
-          <div className={styles.topPart}>
-            <button className={styles.changeTable + " " + "recentButton"} onClick={() =>recentProjects()}>Recent</button>
-            <button className={styles.changeTable + " " + "rankingButton"} onClick={rankingFunctionality}>Ranking</button>
-            <button className={styles.changeTable + " " + "launchedButton"} onClick={launchedFunctionality}>Launched</button>
-          </div>
-
-          <div className={styles.table + " " + "nftsTable"} style={{marginTop: "70px"}}>
+  
+          <div className={styles.table + " " + "nftsTable"} style={{marginTop: "80px"}}>
+            <div className={styles.topPart}>
+              <div className={styles.blockchains}>
+                <div className={styles.chains + " " + "allProjects"}>
+                  <button onClick={allProjects}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <line x1="9" y1="6" x2="20" y2="6" />
+                      <line x1="9" y1="12" x2="20" y2="12" />
+                      <line x1="9" y1="18" x2="20" y2="18" />
+                      <line x1="5" y1="6" x2="5" y2="6.01" />
+                      <line x1="5" y1="12" x2="5" y2="12.01" />
+                      <line x1="5" y1="18" x2="5" y2="18.01" />
+                    </svg>
+                    ALL
+                  </button>
+                </div>
+                <div className={styles.chains + " " + "solanaProjects"}>
+                  <button onClick={solanaProjects}>
+                    <img src="/solana.svg" className={styles.solana}/>
+                    SOLANA
+                  </button>
+                </div>
+                <div className={styles.chains + " " + "ethProjects"}>
+                  <button onClick={ethProjects}>
+                    <img src="/ethereum.svg" className={styles.eth}/>
+                    ETHEREUM
+                  </button>
+                </div>
+              </div>
+              <div className={styles.filters}>
+                <div className={styles.changeTable + " " + "recentButton"}>
+                  <button onClick={() =>recentProjects()}>RECENT</button>
+                </div>
+                <div className={styles.changeTable + " " + "rankingButton"}>
+                  <button  onClick={rankingFunctionality}>RANKING</button>
+                </div>
+                <div className={styles.changeTable + " " + "launchedButton"}>
+                  <button onClick={launchedFunctionality}>LAUNCHED</button>
+                </div>
+              </div>
+            </div>
             <div className={styles.tableHeader}>
                 <div>No.</div>
                 <div>Name</div>
                 <div>Launched</div>
+                <div>Blockchain</div>
                 <div style={{marginLeft: "7px"}}>Website</div>
                 <div>Twitter</div>
                 <div>Discord</div>
                 <div>DAO Votes</div>
             </div>
- 
+
             {
               data ? 
                 data.map((d, index) => (
-                  <div key={d._doc.id}>
-                    <div className={styles.row} onClick={() => PopUpProject(d._doc.projectName, d._doc.projectDescription, d._doc.projectTwitterUrl, d._doc.projectImageUrl, d._doc.upvotes, d._doc.projectDiscordUrl, d._doc.projectWebsiteUrl)} >
+                  <div key={d.id}>
+                    <div className={styles.row} onClick={() => PopUpProject(d.projectName, d.projectDescription, d.projectTwitterUrl, d.projectImageUrl, d.upvotes, d.projectDiscordUrl, d.projectWebsiteUrl)} >
                       <div><span className={styles.mobileInfo}>No.:&nbsp;</span>{index+1}</div>
                       <div className={styles.name}>
                         <span className={styles.mobileInfo}>Name:&nbsp;</span>
-                        <img src={`${d._doc.projectLogoUrl}`}/>
-                        <p>{d._doc.projectName}</p>
+                        <img src={`${d.projectLogoUrl}`}/>
+                        <p>{d.projectName}</p>
                       </div>
                       <div className={styles.launched}>
                       <span className={styles.mobileInfo}>Launched:&nbsp;</span>
-                        {d._doc.launched ? 
+                        {d.launched ? 
                           <p className={styles.launched}>Launched</p>
                           :
                           <p className={styles.upcoming}>Upcoming</p>
                         }
                       </div>
+                      <div className={styles.projectBlockchain}>
+                        <img src={`/${d.blockchain}.svg`} />
+                      </div>
                       <div className={styles.website}>
                         <span className={styles.mobileInfo}>Website:&nbsp;</span>
-                          <a href={`${d._doc.projectWebsiteUrl}`} target="_blank" rel="noreferrer">
+                          <a href={`${d.projectWebsiteUrl}`} target="_blank" rel="noreferrer">
                           <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="12" r="9" />
@@ -345,18 +521,18 @@ export default function Home() {
                         </div>
                       <div className={styles.twitterNumbers}>
                         <span className={styles.mobileInfo}>Twitter:&nbsp;</span>
-                        <a href={`${d._doc.projectTwitterUrl}`} target="_blank" rel="noreferrer">
+                        <a href={`${d.projectTwitterUrl}`} target="_blank" rel="noreferrer">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
                         </a>
                       </div>
                       <div className={styles.discordNumbers}>
                         <span className={styles.mobileInfo}>Discord:&nbsp;</span>
-                        <a href={`${d._doc.projectDiscordUrl}`} target="_blank" rel="noreferrer"><img src="/discord.svg"/></a>
+                        <a href={`${d.projectDiscordUrl}`} target="_blank" rel="noreferrer"><img src="/discord.svg"/></a>
                       </div>
                       <div className={styles.daoVotes}>
                         <span className={styles.mobileInfo}>DAO Votes:&nbsp;</span>
-                        <p>{d._doc.upvotes}</p>
-                        {d._doc.upvotes >= d._doc.downvotes ? <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <p>{d.upvotes}</p>
+                        {d.upvotes >= d.downvotes ? <svg className={styles.up} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <g clipPath="url(#clip0_5_54)">
                           <path d="M12 4.5L13.7175 6.2175L10.0575 9.8775L7.0575 6.8775L1.5 12.4425L2.5575 13.5L7.0575 9L10.0575 12L14.7825 7.2825L16.5 9V4.5H12Z" fill="#00DC3E"/>
                           </g>
@@ -380,7 +556,6 @@ export default function Home() {
                         }
                       </div>
                     </div>
-                    <div className={styles.line} key={index}></div>
                   </div>
                   )
                 )
