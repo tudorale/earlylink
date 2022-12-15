@@ -504,7 +504,7 @@ export default function Home() {
                         }
                       </div>
                       <div className={styles.projectBlockchain}>
-                        <img src={`/${d.blockchain}.svg`} />
+                        <img src={d.blockchain == "Solana" ? "/solana.svg" : d.blockchain == "Ethereum" ? "/ethereum.svg" : ""} />
                       </div>
                       <div className={styles.website}>
                         <span className={styles.mobileInfo}>Website:&nbsp;</span>
