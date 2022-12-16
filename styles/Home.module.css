@@ -26,7 +26,7 @@
 
 .earlyLinkLogo img {
   width: 150px;
-  height: 40px;
+  height: 42px;
 }
 
 .navIconsWrapper{
@@ -126,6 +126,20 @@
 
 .chains button .eth{
   width: 15px;
+  margin-left: 4px;
+  margin-right: 10px;
+  position: relative;
+}
+
+.chains button .sui{
+  width: 20px;
+  margin-right: 8px;
+  position: relative;
+}
+
+.chains button .aptos{
+  width: 22px;
+  margin-left: 4px;
   margin-right: 10px;
   position: relative;
 }
@@ -451,10 +465,8 @@
     transition: all 350ms linear;
   }
 
-  .ethereumChain {
-    margin-top: 10px;
-    margin-left: 0px;
-    position: relative;
+  .navbar {
+    padding: 15px 25px;
   }
 
   .closeMenu{
@@ -462,7 +474,7 @@
   }
 
   .rightSide a {
-    margin-right: 0px;
+    margin-right: 25px;
     margin-top: 15px;
   }
 
@@ -476,10 +488,6 @@
     margin-top: 15px;
   }
   
-  .changeChain{
-    margin-right: 0px;
-  }
-
   
   .hamburger {
     display: flex;
@@ -490,41 +498,61 @@
 }
 }
 
-@media only screen and (max-width: 1250px){
+@media only screen and (max-width: 1350px){
 
   .tableHeader {
-    grid-template-columns: 80px 250px 120px 140px 120px 120px 100px;
+    grid-template-columns: 100px 300px 150px 140px 140px 120px 120px 100px;
   }
-  
+
   .row{
-    grid-template-columns: 80px 250px 120px 140px 120px 120px 100px;
+    grid-template-columns: 100px 300px 150px 140px 140px 120px 120px 100px;
+  }
+}
+
+@media only screen and (max-width: 1200px){
+
+  .tableHeader {
+    grid-template-columns: 50px 270px 110px 110px 100px 80px 80px 100px;
+  }
+
+  .row{
+    grid-template-columns: 50px 270px 110px 110px 100px 80px 80px 100px;
   }
 }
 
 @media only screen and (max-width: 1025px){
-  .heroTitle{
-    font-size: 2rem;
-    text-align: center;
-    padding: 0 15px;
-  }
 
-  .row:hover{
-    transform: none;
-    background-color: #0c003a;
+  .table{
+    width: 100%;
+    left: 0px;
   }
 
   .tableHeader {
-    grid-template-columns: 60px 200px 110px 110px 90px 90px 100px;
+    grid-template-columns: 50px 270px 110px 110px 100px 80px 80px 100px;
+    margin-left: 0px;
   }
-  
+
+  .tableHeader div:nth-child(1){
+    margin-left: 5px;
+  }
+
   .row{
-    grid-template-columns: 60px 200px 110px 110px 90px 90px 100px;
+    margin-left: 0px;
+    grid-template-columns: 50px 270px 110px 110px 100px 80px 80px 100px;
   }
 
   .website a svg{
     width: 30px;
     height: 30px;
   }
+
+  .projectBlockchain img{
+    width: 27px;
+    height: 27px;
+    position: relative;
+    top: 2px;
+  }
+
   .discordNumbers a img{
     width: 37px;
     height: 37px;
@@ -536,20 +564,45 @@
     height: 25px;
     margin-left: 13px;
   }
+
+  .topPart {
+    display: flex;
+    margin-top: 30px;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 0px;
+    margin-bottom: 15px;
+    border-bottom: 0px solid rgb(80, 80, 80);
+  }
+
+  .blockchains{
+    border-bottom: 1px solid rgb(80, 80, 80);
+    flex-wrap: wrap;
+  }
+
+  .chains {
+    border-bottom: none !important;
+  }
+
+  .filters {
+    margin-top: 50px;
+    border-bottom: 1px solid rgb(80, 80, 80);
+  }
 }
 
-@media only screen and (max-width: 838px){
+@media only screen and (max-width: 930px){
 
   .tableHeader {
-    grid-template-columns: 40px 150px 110px 110px 90px 90px 100px;
+    grid-template-columns: 50px 230px 100px 95px 85px 70px 75px 100px;
   }
+
+  .row{
+    grid-template-columns: 50px 230px 100px 95px 85px 70px 75px 100px;
+  }
+
   
   .tableHeader div{
     font-size: 1rem;
-  }
-  
-  .row{
-    grid-template-columns: 40px 150px 110px 110px 90px 90px 100px;
   }
 
   .row div {
@@ -561,13 +614,12 @@
   display: none;
 }
 
-@media only screen and (max-width: 770px){
+@media only screen and (max-width: 820px){
   .row{
     grid-template-columns: 1fr;
     width: 95%;
     margin: 0 15px;
     padding-top: 20px;
-    margin-left: 10px;
   }
 
   .row div:nth-child(2){
@@ -578,22 +630,7 @@
     display: block;
     width: 35px;
     height: 35px;
-  }
-
-  .row:hover{
-    transform: none;
-    background-color: #0c003a;
-  }
-
-  .table{
-    width: 100%;
-    left: 0px;
-  }
-
-  .line {
     margin-left: 5px;
-    width: 90%;
-    margin: 15px auto;
   }
 
   .tableHeader{
@@ -605,6 +642,13 @@
     color: var(--lightest);
   }
 
+  .mobileLine {
+    width: 95%;
+    height: 1px;
+    margin: 0 auto;
+    background-color: rgb(153, 153, 153);
+  }
+
   .row div:nth-child(1){
     margin-left: 0px;
   }
@@ -612,7 +656,7 @@
   .row div:nth-child(3) {
     margin-left: 0px;
     display: flex;
-    margin-top: -20px;
+    margin-top: -15px;
     align-items: center;
     margin-bottom: -15px;
   }
@@ -620,8 +664,13 @@
   .row div:nth-child(4) {
     margin-left: 0px;
     display: flex;
-    margin-top: 40px;
     align-items: center;
+    position: relative;
+    top: 7px;
+  }
+
+  .row div:nth-child(4) img{
+    margin-left: 2px;
   }
 
   .row div:nth-child(2){
@@ -641,32 +690,28 @@
     margin-left: 0px;
   }
 
-  .row div:nth-child(4){
+  .row div:nth-child(5){
     margin-left: 0px;
-    margin-top: 5px;
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
   }
 
-  .row div:nth-child(5){
+  .row div:nth-child(6){
     margin-left: 0px;
     margin-top: 0px;
   }
 
-
-  .row div:nth-child(6){
-    margin-left: 0px;
-    margin-top: -10px;
-  }
-
   .row div:nth-child(7){
     margin-left: 0px;
-    margin-top: -15px;
-
+    margin-top: -5px;
   }
 
-}
+  .row div:nth-child(8){
+    margin-left: 0px;
+    margin-top: -15px;
+  }
 
-.break {
-  display: none;
 }
 
 @media only screen and (max-width: 590px){
@@ -681,7 +726,6 @@
     width: fit-content;
     margin-right: 0px;
   }
-  
 }
 
 @media only screen and (max-width: 530px){
@@ -739,4 +783,11 @@
   .topPart button{
     margin-top: 10px;
   }
+}
+
+@media only screen and (max-width: 350px) {
+  .changeTable button{
+    font-size: 0.95rem;
+  }
+
 }

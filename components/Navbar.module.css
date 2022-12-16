@@ -22,7 +22,7 @@
 
 .earlyLinkLogo img {
   width: 150px;
-  height: 40px;
+  height: 42px;
 }
 
 .navIconsWrapper{
@@ -105,9 +105,13 @@
     .closeMenu{
       display: block;
     }
+
+    .navbar {
+      padding: 15px 25px;
+    }
   
     .rightSide a {
-      margin-right: 0px;
+      margin-right: 25px;
       margin-top: 15px;
     }
     .hamburger {
