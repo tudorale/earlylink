@@ -48,12 +48,15 @@ export default function Home() {
   const [allActive, setAllActive] = useState(true);
   const [solanaActive, setSolanaActive] = useState(false);
   const [ethActive, setEthActive] = useState(false);
+  const [aptosActive, setAptosActive] = useState(false);
+  const [suiActive, setSuiActive] = useState(false);
 
   const allProjects = () => {
-
     setAllActive(true);
     setSolanaActive(false);
     setEthActive(false);
+    setAptosActive(false);
+    setSuiActive(false);
 
     let allBtn = document.querySelector(".allProjects");
     let solanaBtn = document.querySelector(".solanaProjects");
@@ -80,7 +83,11 @@ export default function Home() {
 
     axios.get("https://api.earlylink.io/votes")
       .then(res => {
-        setData(res.data);
+        let newD = res.data.filter((data) => {
+          return data.launched == false;
+          }
+        );
+        setData(newD);
       })
   }
   
@@ -236,12 +243,19 @@ export default function Home() {
             }
           );
           setData(extraNew);
+        }else if(allActive){
+          let newD = res.data.filter((data) => {
+            return data.launched == true;
+            }
+          );
+          setData(newD);
+        }else{
+          let newD = data.filter((data) => {
+            return data.launched == true;
+            }
+          );
+          setData(newD);
         }
-        let newD = data.filter((data) => {
-          return data.launched == true;
-          }
-        );
-        setData(newD);
       })
 
       setRankingTrigger(false);
@@ -263,21 +277,39 @@ export default function Home() {
             return data.blockchain == "Ethereum";
             }
           );
-          setData(newD);
+          let extraNew = newD.filter((data) => {
+            return data.launched == false;
+            }
+          );
+          setData(extraNew);
         }else if(solanaActive){
           let newD = res.data.filter((data) => {
             return data.blockchain == "Solana";
             }
           );
-          setData(newD);
+          let extraNew = newD.filter((data) => {
+            return data.launched == false;
+            }
+          );
+          setData(extraNew);
         }else{
-          setData(res.data);
+          let newD = res.data.filter((data) => {
+            return data.launched == false;
+            }
+          );
+          setData(newD);
         }
       })
     }
   }
 
   const solanaProjects = () => {
+    setSolanaActive(true);
+    setEthActive(false);
+    setAptosActive(false);
+    setSuiActive(false);
+    setAllActive(false);
+
     let allBtn = document.querySelector(".allProjects");
     let solanaBtn = document.querySelector(".solanaProjects");
     let ethBtn = document.querySelector(".ethProjects");
@@ -315,11 +347,20 @@ export default function Home() {
         return data.blockchain == "Solana";
         }
       );
-      setData(newD);
+      let extraNew = newD.filter((data) => {
+        return data.launched == false;
+        }
+      );
+      setData(extraNew);
     })
   }
 
   const ethProjects = () => {
+    setSolanaActive(false);
+    setEthActive(true);
+    setAptosActive(false);
+    setSuiActive(false);
+    setAllActive(false);
 
     let allBtn = document.querySelector(".allProjects");
     let solanaBtn = document.querySelector(".solanaProjects");
@@ -356,13 +397,22 @@ export default function Home() {
         return data.blockchain == "Ethereum";
         }
       );
-      setData(newD);
+      let extraNew = newD.filter((data) => {
+        return data.launched == false;
+        }
+      );
+      setData(extraNew);
     })
 
   }
 
   const aptosProjects = () => {
-    
+    setSolanaActive(false);
+    setEthActive(false);
+    setAptosActive(true);
+    setSuiActive(false);
+    setAllActive(false);
+
     let allBtn = document.querySelector(".allProjects");
     let solanaBtn = document.querySelector(".solanaProjects");
     let ethBtn = document.querySelector(".ethProjects");
@@ -398,12 +448,21 @@ export default function Home() {
         return data.blockchain == "Aptos";
         }
       );
-      setData(newD);
+      let extraNew = newD.filter((data) => {
+        return data.launched == false;
+        }
+      );
+      setData(extraNew);
     })
 
   }
 
   const suiProjects = () => {
+    setSolanaActive(false);
+    setEthActive(false);
+    setAptosActive(false);
+    setSuiActive(true);
+    setAllActive(false);
 
     let allBtn = document.querySelector(".allProjects");
     let solanaBtn = document.querySelector(".solanaProjects");
@@ -440,7 +499,11 @@ export default function Home() {
         return data.blockchain == "Aptos";
         }
       );
-      setData(newD);
+      let extraNew = newD.filter((data) => {
+        return data.launched == false;
+        }
+      );
+      setData(extraNew)
     })
 
   }
