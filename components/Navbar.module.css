@@ -1,12 +1,12 @@
 .navbar {
   width: 100%;
-  padding: 0px 25px;
+  padding: 5px 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 9999;
-  border-bottom: 1px solid rgb(80, 80, 80);
+  border-bottom: 1px solid rgb(216, 216, 216);
 }
 
 .logo {
@@ -21,9 +21,23 @@
 }
 
 .earlyLinkLogo img {
-  width: 150px;
-  height: 42px;
+  width: 170px;
+  height: 45px;
 }
+
+.navIconsWrapper{
+  displaY: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.navIconsWrapper a img {
+  width: 30px;
+  margin-top: 10px;
+  margin-left: -5px;
+  stroke:rgb(255, 255, 255);
+}
+
 
 .navIconsWrapper{
   displaY: flex;
@@ -35,7 +49,7 @@
   width: 30px;
   margin-top: 10px;
   margin-left: -15px;
-  stroke:rgb(153, 153, 153);
+  stroke:rgb(255, 255, 255);
 }
 
 
@@ -45,7 +59,7 @@
 }
 
 .rightSide a {
-  color: rgb(153, 153, 153);
+  color: rgb(255, 255, 255);
   font-size: 1.15rem;
   margin-right: 25px;
 }

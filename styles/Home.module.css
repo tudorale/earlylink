@@ -4,13 +4,13 @@
 
 .navbar {
   width: 100%;
-  padding: 0px 25px;
+  padding: 5px 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 9999;
-  border-bottom: 1px solid rgb(80, 80, 80);
+  border-bottom: 1px solid rgb(216, 216, 216);
 }
 
 .logo {
@@ -25,8 +25,8 @@
 }
 
 .earlyLinkLogo img {
-  width: 150px;
-  height: 42px;
+  width: 170px;
+  height: 45px;
 }
 
 .navIconsWrapper{
@@ -35,11 +35,11 @@
   margin-left: 10px;
 }
 
-.navIconsWrapper a svg {
+.navIconsWrapper a img {
   width: 30px;
   margin-top: 10px;
-  margin-left: -15px;
-  stroke:rgb(153, 153, 153);
+  margin-left: -5px;
+  stroke:rgb(255, 255, 255);
 }
 
 
@@ -49,7 +49,7 @@
 }
 
 .rightSide a {
-  color: rgb(153, 153, 153);
+  color: rgb(255, 255, 255);
   font-size: 1.15rem;
   margin-right: 25px;
 }
@@ -186,9 +186,15 @@
   align-items: center;
   background: none;
   margin-top: 20px;
-  margin-left: -32px;
+  margin-left: -25px;
   transition: all 250ms linear;
   cursor: pointer;
+  background-color: var(--lighter-bg);
+}
+
+.row:hover{
+  background-color: #0d0041;
+  transform: scale(101%);
 }
 
 .row div{
@@ -248,7 +254,7 @@
 }
 
 .row div:nth-child(1){
-  margin-left: 10px;
+  margin-left: 17px;
 }
 
 .row div:nth-child(2){
@@ -528,16 +534,18 @@
   }
 
   .tableHeader {
-    grid-template-columns: 50px 270px 110px 110px 100px 80px 80px 100px;
+    grid-template-columns: 63px 270px 110px 110px 100px 80px 80px 100px;
     margin-left: 0px;
   }
 
   .tableHeader div:nth-child(1){
-    margin-left: 5px;
+    margin-left: 17px;
   }
 
   .row{
     margin-left: 0px;
+    width: 98%;
+    margin-left: 10px;
     grid-template-columns: 50px 270px 110px 110px 100px 80px 80px 100px;
   }
 
@@ -620,6 +628,8 @@
     width: 95%;
     margin: 0 15px;
     padding-top: 20px;
+    padding-left: 15px;
+    border-radius: 10px;
   }
 
   .row div:nth-child(2){
@@ -645,8 +655,12 @@
   .mobileLine {
     width: 95%;
     height: 1px;
-    margin: 0 auto;
+    margin: 15px auto;
     background-color: rgb(153, 153, 153);
+  }
+
+  .row:hover{
+    transform: none;
   }
 
   .row div:nth-child(1){
@@ -782,6 +796,10 @@
 
   .topPart button{
     margin-top: 10px;
+  }
+
+  .row{
+    width: 92%;
   }
 }
 
