@@ -570,7 +570,7 @@ export default function Home() {
             <div className={styles.tableHeader}>
                 <div>No.</div>
                 <div>Name</div>
-                <div>Launched</div>
+                <div>Status</div>
                 <div>Blockchain</div>
                 <div style={{marginLeft: "7px"}}>Website</div>
                 <div>Twitter</div>
@@ -591,7 +591,7 @@ export default function Home() {
                           <p>{d.projectName}</p>
                         </div>
                         <div className={styles.launched}>
-                        <span className={styles.mobileInfo}>Launched:&nbsp;</span>
+                        <span className={styles.mobileInfo}>Status:&nbsp;</span>
                           {d.launched ? 
                             <p className={styles.launched}>Launched</p>
                             :
