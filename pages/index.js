@@ -50,6 +50,8 @@ export default function Home() {
   const [ethActive, setEthActive] = useState(false);
   const [aptosActive, setAptosActive] = useState(false);
   const [suiActive, setSuiActive] = useState(false);
+  const [cantoActive, setCantoActive] = useState(false);
+
 
   const allProjects = () => {
     setAllActive(true);
@@ -57,17 +59,28 @@ export default function Home() {
     setEthActive(false);
     setAptosActive(false);
     setSuiActive(false);
+    setCantoActive(false);
 
     let allBtn = document.querySelector(".allProjects");
     let solanaBtn = document.querySelector(".solanaProjects");
     let ethBtn = document.querySelector(".ethProjects");
+    let aptosBtn = document.querySelector(".aptosProjects");
+    let suiBtn = document.querySelector(".suiProjects");
+    let cantoBtn = document.querySelector(".cantoProjects");
 
     Object.assign(allBtn.style, active);
     Object.assign(solanaBtn.style, unactive);
     Object.assign(ethBtn.style, unactive);
+    Object.assign(aptosBtn.style, unactive);
+    Object.assign(suiBtn.style, unactive);
+    Object.assign(cantoBtn.style, unactive);
+
     allBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
     solanaBtn.firstChild.style.textShadow = "none"
     ethBtn.firstChild.style.textShadow = "none"
+    aptosBtn.firstChild.style.textShadow = "none"
+    suiBtn.firstChild.style.textShadow = "none"
+    cantoBtn.firstChild.style.textShadow = "none"
 
     // filters
     let recentBtn = document.querySelector(".recentButton");
@@ -315,17 +328,21 @@ export default function Home() {
     let ethBtn = document.querySelector(".ethProjects");
     let aptosBtn = document.querySelector(".aptosProjects");
     let suiBtn = document.querySelector(".suiProjects");
+    let cantoBtn = document.querySelector(".cantoProjects");
 
     Object.assign(solanaBtn.style, active);
     Object.assign(allBtn.style, unactive);
     Object.assign(ethBtn.style, unactive);
     Object.assign(aptosBtn.style, unactive);
     Object.assign(suiBtn.style, unactive);
+    Object.assign(cantoBtn.style, unactive);
+
     solanaBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
     allBtn.firstChild.style.textShadow = "none"
     ethBtn.firstChild.style.textShadow = "none"
     aptosBtn.firstChild.style.textShadow = "none"
     suiBtn.firstChild.style.textShadow = "none"
+    cantoBtn.firstChild.style.textShadow = "none"
 
 
     // filters
@@ -361,24 +378,29 @@ export default function Home() {
     setAptosActive(false);
     setSuiActive(false);
     setAllActive(false);
+    setCantoActive(false);
 
     let allBtn = document.querySelector(".allProjects");
     let solanaBtn = document.querySelector(".solanaProjects");
     let ethBtn = document.querySelector(".ethProjects");
     let aptosBtn = document.querySelector(".aptosProjects");
     let suiBtn = document.querySelector(".suiProjects");
+    let cantoBtn = document.querySelector(".cantoProjects");
 
     Object.assign(ethBtn.style, active);
     Object.assign(allBtn.style, unactive);
     Object.assign(solanaBtn.style, unactive);
     Object.assign(aptosBtn.style, unactive);
     Object.assign(suiBtn.style, unactive);
+    Object.assign(cantoBtn.style, unactive);
+
     ethBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
     allBtn.firstChild.style.textShadow = "none"
     solanaBtn.firstChild.style.textShadow = "none"
     aptosBtn.firstChild.style.textShadow = "none"
     suiBtn.firstChild.style.textShadow = "none"
-     
+    cantoBtn.firstChild.style.textShadow = "none"
+
     // filters
      let recentBtn = document.querySelector(".recentButton");
      let rankingBtn = document.querySelector(".rankingButton");
@@ -412,23 +434,28 @@ export default function Home() {
     setAptosActive(true);
     setSuiActive(false);
     setAllActive(false);
+    setCantoActive(false);
 
     let allBtn = document.querySelector(".allProjects");
     let solanaBtn = document.querySelector(".solanaProjects");
     let ethBtn = document.querySelector(".ethProjects");
     let aptosBtn = document.querySelector(".aptosProjects");
     let suiBtn = document.querySelector(".suiProjects");
+    let cantoBtn = document.querySelector(".cantoProjects");
 
     Object.assign(aptosBtn.style, active);
     Object.assign(allBtn.style, unactive);
     Object.assign(solanaBtn.style, unactive);
     Object.assign(ethBtn.style, unactive);
     Object.assign(suiBtn.style, unactive);
+    Object.assign(cantoBtn.style, unactive);
+
     aptosBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
     allBtn.firstChild.style.textShadow = "none"
     solanaBtn.firstChild.style.textShadow = "none"
     suiBtn.firstChild.style.textShadow = "none"
     ethBtn.firstChild.style.textShadow = "none"
+    cantoBtn.firstChild.style.textShadow = "none"
 
      // filters
      let recentBtn = document.querySelector(".recentButton");
@@ -463,23 +490,29 @@ export default function Home() {
     setAptosActive(false);
     setSuiActive(true);
     setAllActive(false);
-
+    setCantoActive(false);
+    
     let allBtn = document.querySelector(".allProjects");
     let solanaBtn = document.querySelector(".solanaProjects");
     let ethBtn = document.querySelector(".ethProjects");
     let aptosBtn = document.querySelector(".aptosProjects");
     let suiBtn = document.querySelector(".suiProjects");
+    let cantoBtn = document.querySelector(".cantoProjects");
+
 
     Object.assign(suiBtn.style, active);
     Object.assign(allBtn.style, unactive);
     Object.assign(solanaBtn.style, unactive);
     Object.assign(ethBtn.style, unactive);
     Object.assign(aptosBtn.style, unactive);
+    Object.assign(cantoBtn.style, unactive);
+
     suiBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
     allBtn.firstChild.style.textShadow = "none"
     solanaBtn.firstChild.style.textShadow = "none"
     aptosBtn.firstChild.style.textShadow = "none"
     ethBtn.firstChild.style.textShadow = "none"
+    cantoBtn.firstChild.style.textShadow = "none"
 
      // filters
      let recentBtn = document.querySelector(".recentButton");
@@ -508,6 +541,61 @@ export default function Home() {
 
   }
 
+  const cantoProjects = () => {
+    setSolanaActive(false);
+    setEthActive(false);
+    setAptosActive(false);
+    setSuiActive(false);
+    setAllActive(false);
+    setCantoActive(true);
+
+    let allBtn = document.querySelector(".allProjects");
+    let solanaBtn = document.querySelector(".solanaProjects");
+    let ethBtn = document.querySelector(".ethProjects");
+    let aptosBtn = document.querySelector(".aptosProjects");
+    let suiBtn = document.querySelector(".suiProjects");
+    let cantoBtn = document.querySelector(".cantoProjects");
+
+
+    Object.assign(suiBtn.style, unactive);
+    Object.assign(allBtn.style, unactive);
+    Object.assign(solanaBtn.style, unactive);
+    Object.assign(ethBtn.style, unactive);
+    Object.assign(aptosBtn.style, unactive);
+    Object.assign(cantoBtn.style, active);
+    cantoBtn.firstChild.style.textShadow = "1px 1px 20px #8900F4"
+    allBtn.firstChild.style.textShadow = "none"
+    solanaBtn.firstChild.style.textShadow = "none"
+    aptosBtn.firstChild.style.textShadow = "none"
+    ethBtn.firstChild.style.textShadow = "none"
+    suiBtn.firstChild.style.textShadow = "none"
+
+     // filters
+     let recentBtn = document.querySelector(".recentButton");
+     let rankingBtn = document.querySelector(".rankingButton");
+     let launchedBtn = document.querySelector(".launchedButton");
+ 
+     Object.assign(rankingBtn.style, unactive);
+     Object.assign(recentBtn.style, unactive);
+     Object.assign(launchedBtn.style, unactive);
+     rankingBtn.firstChild.style.textShadow = "none"
+     recentBtn.firstChild.style.textShadow = "none"
+     launchedBtn.firstChild.style.textShadow = "none" 
+    
+    axios.get("https://api.earlylink.io/votes")
+    .then(res => {
+      let newD = res.data.filter((data) => {
+        return data.blockchain == "Canto";
+        }
+      );
+      let extraNew = newD.filter((data) => {
+        return data.launched == false;
+        }
+      );
+      setData(extraNew)
+    })
+
+  }
 
   return (
     <>
@@ -591,6 +679,12 @@ export default function Home() {
                       <line x1="5" y1="18" x2="5" y2="18.01" />
                     </svg>
                     ALL
+                  </button>
+                </div>
+                <div className={styles.chains + " " + "cantoProjects"}>
+                  <button onClick={cantoProjects}>
+                    <img src="/canto.png" className={styles.canto}/>
+                    CANTO
                   </button>
                 </div>
                 <div className={styles.chains + " " + "solanaProjects"}>

@@ -119,6 +119,12 @@
   position: relative;
 }
 
+.chains button .canto{
+  width: 27px;
+  margin-right: 10px;
+  position: relative;
+}
+
 .chains button {
   display: flex;
   align-items: center;
